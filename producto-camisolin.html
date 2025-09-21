@@ -226,14 +226,14 @@
   <main>
     <h2 class="producto-titulo">Camisolín de Morley</h2>
     <div class="carousel">
-      <img src="images/CamisolinBlanco.webp" alt="Camisolín Blanco">
-      <img src="images/CamisolinBordo.webp" alt="Camisolín Bordo">
-      <img src="images/CamisolinGrisMelange.webp" alt="Camisolín Gris Melange">
-      <img src="images/CamisolinGrisTopo.webp" alt="Camisolín Gris Topo">
-      <img src="images/CamisolinMarinoSS.webp" alt="Camisolín Marino">
-      <img src="images/CamisolinMilitar.webp" alt="Camisolín Militar">
-      <img src="images/CamisolinNegro.webp" alt="Camisolín Negro">
-      <img src="images/CamisolinSalmon.webp" alt="Camisolín Salmón">
+      <img class="popup-img" src="images/CamisolinBlanco.webp" alt="Camisolín Blanco">
+      <img class="popup-img" src="images/CamisolinBordo.webp" alt="Camisolín Bordo">
+      <img class="popup-img" src="images/CamisolinGrisMelange.webp" alt="Camisolín Gris Melange">
+      <img class="popup-img" src="images/CamisolinGrisTopo.webp" alt="Camisolín Gris Topo">
+      <img class="popup-img" src="images/CamisolinMarinoSS.webp" alt="Camisolín Marino">
+      <img class="popup-img" src="images/CamisolinMilitar.webp" alt="Camisolín Militar">
+      <img class="popup-img" src="images/CamisolinNegro.webp" alt="Camisolín Negro">
+      <img class="popup-img" src="images/CamisolinSalmon.webp" alt="Camisolín Salmón">
     </div>
     <div class="info-box">
       <p><strong>Guía de Talles:</strong></p>
@@ -252,9 +252,46 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <!-- Popup Modal para imágenes grandes -->
+  <div id="imgModal">
+    <button class="close-modal" title="Cerrar">&times;</button>
+    <img id="modalImg" src="" alt="Imagen ampliada">
+  </div>
+  <script>
+    // Modal popup para ampliar imágenes
+    document.querySelectorAll('.popup-img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        document.getElementById('modalImg').src = this.src;
+        document.getElementById('imgModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelector('#imgModal .close-modal').onclick = function(e) {
+      document.getElementById('imgModal').style.display = 'none';
+      document.getElementById('modalImg').src = '';
+      document.body.style.overflow = '';
+      e.stopPropagation();
+    };
+    document.getElementById('imgModal').onclick = function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    };
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){
+        document.getElementById('imgModal').style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+  
   <footer>
     <p>&copy; 2025 Tienda Meiga – WhatsApp: 1138811121</p>
   </footer>
 </body>
 </html>
+
 
