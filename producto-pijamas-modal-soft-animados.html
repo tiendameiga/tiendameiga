@@ -88,78 +88,56 @@
       font-size: 2rem;
       letter-spacing: 1px;
     }
-    .productos {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px;
-      justify-content: center;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(127,35,82,0.08);
-      padding: 22px 16px 16px 16px;
-      text-align: center;
-      transition: transform 0.2s;
+    .carousel {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 370px;
-      max-width: 900px;
-      margin: 0 auto;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 10px 0 16px 0;
+      scroll-behavior: smooth;
+      margin-bottom: 16px;
     }
-    .card:hover {
-      transform: translateY(-8px) scale(1.04);
-      box-shadow: 0 8px 24px rgba(127,35,82,0.16);
-    }
-    .card .img-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 13px;
-    }
-    .card img {
-      width: 100px;
-      height: 100px;
+    .carousel img {
+      height: 130px;
+      width: 130px;
       object-fit: cover;
       border-radius: 10px;
       background: #f9e7f4;
       box-shadow: 0 2px 10px rgba(127,35,82,0.07);
       cursor: pointer;
       transition: box-shadow 0.2s;
+      flex: 0 0 auto;
     }
-    .card img:hover {
+    .carousel img:hover {
       box-shadow: 0 4px 18px #d64c82aa;
     }
-    .card h3 {
-      margin: 10px 0 7px 0;
-      font-size: 1.1rem;
-      color: #7f2352;
+    .info-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(127,35,82,0.08);
+      padding: 30px;
+      max-width: 500px;
+      margin: 30px auto 0 auto;
+      text-align: center;
     }
-    .card p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 12px;
-      white-space: pre-line;
-    }
-    .card ul {
+    .info-box ul {
       list-style: none;
       padding: 0;
-      margin: 12px 0 14px 0;
-      text-align: left;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 0 18px 0;
     }
-    .card ul li {
-      font-size: 0.98rem;
+    .info-box ul li {
+      font-size: 1.03rem;
       color: #7f2352;
       background: #f9e7f4;
       border-radius: 7px;
       padding: 6px 10px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       display: block;
+    }
+    .info-box p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 18px;
+      white-space: pre-line;
     }
     .precio {
       font-size: 1.15rem;
@@ -251,14 +229,14 @@
     }
     @media (max-width:900px) {
       main { padding: 14px 7px 28px 7px; }
-      .productos { grid-template-columns: 1fr; gap: 18px;}
+      .carousel img { height: 90px; width: 90px; }
       .producto-titulo { font-size: 1.2rem; }
-      .card img { width: 80px; height: 80px; }
+      .info-box { padding: 18px; }
+      .info-box ul li { font-size: 0.98rem; padding: 5px 7px;}
     }
     @media (max-width:600px) {
-      .productos { grid-template-columns: 1fr; }
-      .card img { width: 65px; height: 65px; }
-      .card ul { max-width: 98vw; }
+      .carousel img { height: 70px; width: 70px; }
+      .info-box { padding: 11px; }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -274,6 +252,7 @@
           <ul>
             <li><a href="producto-megaremeron.html">Mega Remerón</a></li>
             <li><a href="producto-camisolin.html">Camisolín de Morley</a></li>
+            <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
             <li><a href="producto-musculosas.html">Musculosas</a></li>
             <li><a href="producto-pijamas-modal-soft-animados.html">Pijamas Modal Soft Animados</a></li>
           </ul>
@@ -295,55 +274,52 @@
 
   <main>
     <h2 class="producto-titulo">Pijamas Modal Soft Animados</h2>
-    <section class="productos">
-      <div class="card">
-        <div class="img-row">
-          <img class="popup-img" src="images/PAnimadosCorazonesFdoNegro.webp" alt="Corazones Fondo Negro">
-          <img class="popup-img" src="images/PAnimadosDisney.webp" alt="Disney">
-          <img class="popup-img" src="images/PAnimadosGalaxia.webp" alt="Galaxia">
-          <img class="popup-img" src="images/PAnimadosGatitos.webp" alt="Gatitos">
-          <img class="popup-img" src="images/PAnimadosKittyPrint.webp" alt="Kitty Print">
-          <img class="popup-img" src="images/PAnimadosKuromi.webp" alt="Kuromi">
-          <img class="popup-img" src="images/PAnimadosLeopardo.webp" alt="Leopardo">
-          <img class="popup-img" src="images/PAnimadosLilo&Stitch.webp" alt="Lilo & Stitch">
-          <img class="popup-img" src="images/PAnimadosLuna.webp" alt="Luna">
-          <img class="popup-img" src="images/PAnimadosMargaritas.webp" alt="Margaritas">
-          <img class="popup-img" src="images/PAnimadosMarino.webp" alt="Marino">
-          <img class="popup-img" src="images/PAnimadosMariposas.webp" alt="Mariposas">
-          <img class="popup-img" src="images/PAnimadosMickeyClasico.webp" alt="Mickey Clásico">
-          <img class="popup-img" src="images/PAnimadosMickeyEstrellas.webp" alt="Mickey Estrellas">
-          <img class="popup-img" src="images/PAnimadosMickeyGris.webp" alt="Mickey Gris">
-          <img class="popup-img" src="images/PAnimadosMinnie.webp" alt="Minnie">
-          <img class="popup-img" src="images/PAnimadosPacMan.webp" alt="PacMan">
-          <img class="popup-img" src="images/PAnimadosPaltas.webp" alt="Paltas">
-          <img class="popup-img" src="images/Planetas.webp" alt="Planetas">
-          <img class="popup-img" src="images/Pug.webp" alt="Pug">
-          <img class="popup-img" src="images/Ranita.webp" alt="Ranita">
-          <img class="popup-img" src="images/Simba.webp" alt="Simba">
-          <img class="popup-img" src="images/Snoopy.webp" alt="Snoopy">
-          <img class="popup-img" src="images/StitchBlanco.webp" alt="Stitch Blanco">
-          <img class="popup-img" src="images/StitchCrema.webp" alt="Stitch Crema">
-          <img class="popup-img" src="images/StitchCuadros.webp" alt="Stitch Cuadros">
-          <img class="popup-img" src="images/PAnimadosAnimalPrint.webp" alt="Animal Print">
-          <img class="popup-img" src="images/PAnimadosBettyBoop.webp" alt="Betty Boop">
-          <img class="popup-img" src="images/PAnimadosCafe.webp" alt="Café">
-          <img class="popup-img" src="images/PAnimadosConejos.webp" alt="Conejos">
-        </div>
-        <h3>Pijamas Modal Soft Animados</h3>
-        <ul>
-          <li>✔️ <strong>Talle S</strong>: 36 al 40 de pantalón</li>
-          <li>✔️ <strong>Talle M</strong>: 42 al 46 de pantalón</li>
-          <li>✔️ <strong>Talle L</strong>: 48 al 50 de pantalón</li>
-          <li>✔️ <strong>Talle XL</strong>: 52 al 54 de pantalón</li>
-        </ul>
-        <p>💖 Detalles de los Pijamas 💖
+    <div class="carousel">
+      <img class="popup-img" src="images/PAnimadosCorazonesFdoNegro.webp" alt="Corazones Fondo Negro">
+      <img class="popup-img" src="images/PAnimadosDisney.webp" alt="Disney">
+      <img class="popup-img" src="images/PAnimadosGalaxia.webp" alt="Galaxia">
+      <img class="popup-img" src="images/PAnimadosGatitos.webp" alt="Gatitos">
+      <img class="popup-img" src="images/PAnimadosKittyPrint.webp" alt="Kitty Print">
+      <img class="popup-img" src="images/PAnimadosKuromi.webp" alt="Kuromi">
+      <img class="popup-img" src="images/PAnimadosLeopardo.webp" alt="Leopardo">
+      <img class="popup-img" src="images/PAnimadosLilo&Stitch.webp" alt="Lilo & Stitch">
+      <img class="popup-img" src="images/PAnimadosLuna.webp" alt="Luna">
+      <img class="popup-img" src="images/PAnimadosMargaritas.webp" alt="Margaritas">
+      <img class="popup-img" src="images/PAnimadosMarino.webp" alt="Marino">
+      <img class="popup-img" src="images/PAnimadosMariposas.webp" alt="Mariposas">
+      <img class="popup-img" src="images/PAnimadosMickeyClasico.webp" alt="Mickey Clásico">
+      <img class="popup-img" src="images/PAnimadosMickeyEstrellas.webp" alt="Mickey Estrellas">
+      <img class="popup-img" src="images/PAnimadosMickeyGris.webp" alt="Mickey Gris">
+      <img class="popup-img" src="images/PAnimadosMinnie.webp" alt="Minnie">
+      <img class="popup-img" src="images/PAnimadosPacMan.webp" alt="PacMan">
+      <img class="popup-img" src="images/PAnimadosPaltas.webp" alt="Paltas">
+      <img class="popup-img" src="images/Planetas.webp" alt="Planetas">
+      <img class="popup-img" src="images/Pug.webp" alt="Pug">
+      <img class="popup-img" src="images/Ranita.webp" alt="Ranita">
+      <img class="popup-img" src="images/Simba.webp" alt="Simba">
+      <img class="popup-img" src="images/Snoopy.webp" alt="Snoopy">
+      <img class="popup-img" src="images/StitchBlanco.webp" alt="Stitch Blanco">
+      <img class="popup-img" src="images/StitchCrema.webp" alt="Stitch Crema">
+      <img class="popup-img" src="images/StitchCuadros.webp" alt="Stitch Cuadros">
+      <img class="popup-img" src="images/PAnimadosAnimalPrint.webp" alt="Animal Print">
+      <img class="popup-img" src="images/PAnimadosBettyBoop.webp" alt="Betty Boop">
+      <img class="popup-img" src="images/PAnimadosCafe.webp" alt="Café">
+      <img class="popup-img" src="images/PAnimadosConejos.webp" alt="Conejos">
+    </div>
+    <div class="info-box">
+      <ul>
+        <li>✔️ <strong>Talle S</strong>: 36 al 40 de pantalón</li>
+        <li>✔️ <strong>Talle M</strong>: 42 al 46 de pantalón</li>
+        <li>✔️ <strong>Talle L</strong>: 48 al 50 de pantalón</li>
+        <li>✔️ <strong>Talle XL</strong>: 52 al 54 de pantalón</li>
+      </ul>
+      <p>💖 Detalles de los Pijamas 💖
 Nuestros conjuntos están confeccionados en tela modal soft importada y se componen de:
 👕 Remera manga corta
 👖 Short cómodo y suave</p>
-        <div class="precio">$18.000</div>
-        <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20comprar%20los%20Pijamas%20Modal%20Soft%20Animados">Comprar</a>
-      </div>
-    </section>
+      <div class="precio">$18.000</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20comprar%20los%20Pijamas%20Modal%20Soft%20Animados">Comprar</a>
+    </div>
   </main>
 
   <a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
@@ -391,4 +367,3 @@ Nuestros conjuntos están confeccionados en tela modal soft importada y se compo
   </footer>
 </body>
 </html>
-
