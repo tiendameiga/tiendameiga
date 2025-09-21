@@ -119,6 +119,11 @@
       margin-bottom: 13px;
       background: #f9e7f4;
       box-shadow: 0 2px 10px rgba(127,35,82,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .card img:hover {
+      box-shadow: 0 4px 18px #d64c82aa;
     }
     .card h3 {
       margin: 10px 0 7px 0;
@@ -176,6 +181,39 @@
     .whatsapp-btn:hover {
       background: #128c7e;
     }
+    /* Modal styles */
+    #imgModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.2s;
+    }
+    #imgModal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px #000;
+      background: #fffaf6;
+    }
+    #imgModal .close-modal {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 2.1rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1100;
+      background: none;
+      border: none;
+      padding: 0;
+    }
     footer {
       background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
       color: #7f2352;
@@ -214,7 +252,6 @@
   <a href="#">Entrega Inmediata</a>
   <ul>
     <li><a href="producto-repasador.html">Repasador</a></li>
-    <!-- Agrega este -->
     <li><a href="producto-lona-playera.html">Lona Playera</a></li>
   </ul>
 </li>
@@ -306,5 +343,3 @@
   </footer>
 </body>
 </html>
-
-
