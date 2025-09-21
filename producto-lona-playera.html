@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lona Playera - Tienda Meiga</title>
+  <title>Entrega Inmediata - Tienda Meiga</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -78,62 +78,69 @@
     }
     main {
       padding: 30px 20px 40px 20px;
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
     }
-    .producto-titulo {
+    .entrega-titulo {
       color: #7f2352;
       text-align: center;
       margin-bottom: 30px;
       font-size: 2rem;
       letter-spacing: 1px;
     }
-    .galeria {
-      display: flex;
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
       gap: 30px;
       justify-content: center;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
     }
-    .galeria img {
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(127,35,82,0.08);
+      padding: 22px 16px 16px 16px;
+      text-align: center;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 390px;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 24px rgba(127,35,82,0.16);
+    }
+    .card img {
+      width: 100%;
+      max-width: 220px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 13px;
       background: #f9e7f4;
       box-shadow: 0 2px 10px rgba(127,35,82,0.07);
-      border-radius: 10px;
-      width: 350px;
-      max-width: 90vw;
-      height: 260px;
-      object-fit: cover;
-      margin-bottom: 8px;
     }
-    .info-box {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 16px rgba(127,35,82,0.08);
-      padding: 30px;
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .info-box p {
-      margin: 12px 0 20px 0;
-      font-size: 1.05rem;
-      color: #555;
-    }
-    .info-box strong {
+    .card h3 {
+      margin: 10px 0 7px 0;
+      font-size: 1.1rem;
       color: #7f2352;
     }
-    .medida {
-      margin: 8px 0 20px 0;
+    .card .nombre-producto {
+      margin: 0 0 8px 0;
       font-size: 1.05rem;
-      color: #7f2352;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-    .precio {
-      font-size: 1.3rem;
       color: #d64c82;
       font-weight: bold;
-      margin-bottom: 18px;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 12px;
+    }
+    .precio {
+      font-size: 1.15rem;
+      color: #d64c82;
+      font-weight: bold;
+      margin-bottom: 13px;
     }
     .boton {
       display: inline-block;
@@ -153,6 +160,21 @@
     .boton:hover {
       background: #d64c82;
       color: #fff;
+    }
+    .galeria-lona {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .galeria-lona img {
+      width: 100px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #f9e7f4;
+      box-shadow: 0 2px 6px rgba(127,35,82,0.07);
     }
     .whatsapp-btn {
       position: fixed;
@@ -184,12 +206,15 @@
       font-size: 1rem;
       letter-spacing: 1px;
     }
-    @media (max-width:700px) {
+    @media (max-width:900px) {
       main { padding: 14px 7px 28px 7px; }
-      .galeria { gap: 12px; }
-      .galeria img { height: 130px; width: 46vw; }
-      .producto-titulo { font-size: 1.2rem; }
-      .info-box { padding: 18px; }
+      .productos { grid-template-columns: 1fr 1fr; gap: 18px;}
+      .entrega-titulo { font-size: 1.2rem; }
+    }
+    @media (max-width:600px) {
+      .productos { grid-template-columns: 1fr; }
+      .card img { height: 120px; }
+      .galeria-lona img { width: 70px; height: 50px; }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -220,17 +245,21 @@
   </header>
 
   <main>
-    <h2 class="producto-titulo">Lona Playera</h2>
-    <div>Snoopy</div>
-    <div class="galeria">
-      <img src="images/IMG_20250827_194847" alt="Lona Playera 1">
-    </div>
-    <div class="info-box">
-      <p>Están confeccionadas con tela tropical mecánico, lo que las hace super suaves ❤️</p>
-      <div class="medida">Medida: 150 x 150 cm</div>
-      <div class="precio">$19.000</div>
-      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20comprar%20la%20Lona%20Playera%20de%20Entrega%20Inmediata">Comprar</a>
-    </div>
+    <h2 class="entrega-titulo">Productos con Entrega Inmediata</h2>
+    <section class="productos">
+      <div class="card">
+        <div class="galeria-lona">
+          <img src="images/IMG_20250827_194847.webp" alt="Lona Playera 1">
+        </div>
+        <h3>Lona Playera</h3>
+        <div>Snoopy Playa</div>
+        <div class="nombre-producto"></div>
+        <p>Confeccionada con tela tropical mecánico, lo que la hace super suave ❤️</p>
+        <p><strong>Medida:</strong> 150 x 150 cm</p>
+        <div class="precio">$19.000</div>
+        <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20comprar%20la%20Lona%20Playera%20de%20Entrega%20Inmediata">Comprar</a>
+      </div>
+    </section>
   </main>
 
   <a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
@@ -241,5 +270,4 @@
     <p>&copy; 2025 Tienda Meiga – WhatsApp: 1138811121</p>
   </footer>
 </body>
-
 </html>
