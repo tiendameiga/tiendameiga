@@ -119,6 +119,11 @@
       margin-bottom: 13px;
       background: #f9e7f4;
       box-shadow: 0 2px 10px rgba(127,35,82,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .card img:hover {
+      box-shadow: 0 4px 18px #d64c82aa;
     }
     .card h3 {
       margin: 10px 0 7px 0;
@@ -175,6 +180,49 @@
       border-radius: 6px;
       background: #f9e7f4;
       box-shadow: 0 2px 6px rgba(127,35,82,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .galeria-lona img:hover {
+      box-shadow: 0 2px 12px #d64c82aa;
+    }
+    /* Modal styles */
+    #imgModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.2s;
+    }
+    #imgModal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px #000;
+      background: #fffaf6;
+    }
+    #imgModal:active,
+    #imgModal:focus {
+      outline: none;
+    }
+    #imgModal .close-modal {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 2.1rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1100;
+      font-family: Arial, sans-serif;
+      background: none;
+      border: none;
+      padding: 0;
     }
     .whatsapp-btn {
       position: fixed;
@@ -249,12 +297,12 @@
     <section class="productos">
       <div class="card">
         <div class="galeria-lona">
-          <img src="images/IMG_20250827_194847.webp" alt="Lona Playera 1">
+          <img class="popup-img" src="images/IMG_20250827_194847.webp" alt="Lona Playera 1">
+          <img class="popup-img" src="images/IMG_20250827_194928.webp" alt="Lona Playera 2">
         </div>
         <h3>Lona Playera</h3>
-        <div>Snoopy Playa</div>
         <div class="nombre-producto"></div>
-        <p>Confeccionada con tela tropical mecánico, lo que la hace super suave ❤️</p>
+        <p>Están confeccionadas con tela tropical mecánico, lo que las hace super suaves ❤️</p>
         <p><strong>Medida:</strong> 150 x 150 cm</p>
         <div class="precio">$19.000</div>
         <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20comprar%20la%20Lona%20Playera%20de%20Entrega%20Inmediata">Comprar</a>
@@ -265,6 +313,42 @@
   <a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <!-- Popup Modal para imágenes grandes -->
+  <div id="imgModal">
+    <button class="close-modal" title="Cerrar">&times;</button>
+    <img id="modalImg" src="" alt="Imagen ampliada">
+  </div>
+  <script>
+    // Modal popup para ampliar imágenes
+    document.querySelectorAll('.popup-img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        document.getElementById('modalImg').src = this.src;
+        document.getElementById('imgModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelector('#imgModal .close-modal').onclick = function(e) {
+      document.getElementById('imgModal').style.display = 'none';
+      document.getElementById('modalImg').src = '';
+      document.body.style.overflow = '';
+      e.stopPropagation();
+    };
+    document.getElementById('imgModal').onclick = function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    };
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){
+        document.getElementById('imgModal').style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 
   <footer>
     <p>&copy; 2025 Tienda Meiga – WhatsApp: 1138811121</p>
