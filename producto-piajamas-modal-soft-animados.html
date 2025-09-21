@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pijamas Modal Soft Animados - Tienda Meiga</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffaf6;
+      color: #2d2d2d;
+    }
+    header {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #7f2352;
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav ul li {
+      position: relative;
+      margin: 0 18px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #7f2352;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover {
+      color: #d64c82;
+    }
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.08);
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+      min-width: 180px;
+      border-radius: 6px;
+      z-index: 10;
+    }
+    nav ul li ul li {
+      padding: 8px 20px;
+    }
+    nav ul li ul li a {
+      color: #7f2352;
+      font-weight: normal;
+      font-size: 1rem;
+    }
+    nav ul li:hover ul {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    main {
+      padding: 30px 20px 40px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .producto-titulo {
+      color: #d64c82;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    .productos {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(127,35,82,0.08);
+      padding: 22px 16px 16px 16px;
+      text-align: center;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 370px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 24px rgba(127,35,82,0.16);
+    }
+    .card .img-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 13px;
+    }
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #f9e7f4;
+      box-shadow: 0 2px 10px rgba(127,35,82,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .card img:hover {
+      box-shadow: 0 4px 18px #d64c82aa;
+    }
+    .card h3 {
+      margin: 10px 0 7px 0;
+      font-size: 1.1rem;
+      color: #7f2352;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 12px;
+      white-space: pre-line;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 14px 0;
+      text-align: left;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .card ul li {
+      font-size: 0.98rem;
+      color: #7f2352;
+      background: #f9e7f4;
+      border-radius: 7px;
+      padding: 6px 10px;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .precio {
+      font-size: 1.15rem;
+      color: #d64c82;
+      font-weight: bold;
+      margin-bottom: 13px;
+    }
+    .boton {
+      display: inline-block;
+      padding: 13px 38px;
+      background: #f9a1bc;
+      color: #7f2352;
+      font-weight: bold;
+      font-size: 1.07rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      margin-top: auto;
+    }
+    .boton:hover {
+      background: #d64c82;
+      color: #fff;
+    }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+      z-index: 50;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .whatsapp-btn:hover {
+      background: #128c7e;
+    }
+    /* Modal styles */
+    #imgModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.2s;
+    }
+    #imgModal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px #000;
+      background: #fffaf6;
+    }
+    #imgModal .close-modal {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 2.1rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1100;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    footer {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      color: #7f2352;
+      text-align: center;
+      padding: 26px;
+      margin-top: 40px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    @media (max-width:900px) {
+      main { padding: 14px 7px 28px 7px; }
+      .productos { grid-template-columns: 1fr; gap: 18px;}
+      .producto-titulo { font-size: 1.2rem; }
+      .card img { width: 80px; height: 80px; }
+    }
+    @media (max-width:600px) {
+      .productos { grid-template-columns: 1fr; }
+      .card img { width: 65px; height: 65px; }
+      .card ul { max-width: 98vw; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>Tienda Meiga</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li>
+          <a href="#">Productos</a>
+          <ul>
+            <li><a href="producto-megaremeron.html">Mega Remerón</a></li>
+            <li><a href="producto-camisolin.html">Camisolín de Morley</a></li>
+            <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
+            <li><a href="producto-musculosas.html">Musculosas</a></li>
+            <li><a href="producto-pijamas-modal-soft-animados.html">Pijamas Modal Soft Animados</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Entrega Inmediata</a>
+          <ul>
+            <li><a href="producto-repasador.html">Repasador</a></li>
+            <li><a href="producto-lona-playera.html">Lona Playera</a></li>
+            <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
+            <li><a href="producto-musculosas.html">Musculosas</a></li>
+            <li><a href="producto-pijamas-modal-soft-animados.html">Pijamas Modal Soft Animados</a></li>
+          </ul>
+        </li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="producto-titulo">Pijamas Modal Soft Animados</h2>
+    <section class="productos">
+      <div class="card">
+        <div class="img-row">
+          <img class="popup-img" src="images/PAnimadosCorazonesFdoNegro.webp" alt="Corazones Fondo Negro">
+          <img class="popup-img" src="images/PAnimadosDisney.webp" alt="Disney">
+          <img class="popup-img" src="images/PAnimadosGalaxia.webp" alt="Galaxia">
+          <img class="popup-img" src="images/PAnimadosGatitos.webp" alt="Gatitos">
+          <img class="popup-img" src="images/PAnimadosKittyPrint.webp" alt="Kitty Print">
+          <img class="popup-img" src="images/PAnimadosKuromi.webp" alt="Kuromi">
+          <img class="popup-img" src="images/PAnimadosLeopardo.webp" alt="Leopardo">
+          <img class="popup-img" src="images/PAnimadosLilo&Stitch.webp" alt="Lilo & Stitch">
+          <img class="popup-img" src="images/PAnimadosLuna.webp" alt="Luna">
+          <img class="popup-img" src="images/PAnimadosMargaritas.webp" alt="Margaritas">
+          <img class="popup-img" src="images/PAnimadosMarino.webp" alt="Marino">
+          <img class="popup-img" src="images/PAnimadosMariposas.webp" alt="Mariposas">
+          <img class="popup-img" src="images/PAnimadosMickeyClasico.webp" alt="Mickey Clásico">
+          <img class="popup-img" src="images/PAnimadosMickeyEstrellas.webp" alt="Mickey Estrellas">
+          <img class="popup-img" src="images/PAnimadosMickeyGris.webp" alt="Mickey Gris">
+          <img class="popup-img" src="images/PAnimadosMinnie.webp" alt="Minnie">
+          <img class="popup-img" src="images/PAnimadosPacMan.webp" alt="PacMan">
+          <img class="popup-img" src="images/PAnimadosPaltas.webp" alt="Paltas">
+          <img class="popup-img" src="images/Planetas.webp" alt="Planetas">
+          <img class="popup-img" src="images/Pug.webp" alt="Pug">
+          <img class="popup-img" src="images/Ranita.webp" alt="Ranita">
+          <img class="popup-img" src="images/Simba.webp" alt="Simba">
+          <img class="popup-img" src="images/Snoopy.webp" alt="Snoopy">
+          <img class="popup-img" src="images/StitchBlanco.webp" alt="Stitch Blanco">
+          <img class="popup-img" src="images/StitchCrema.webp" alt="Stitch Crema">
+          <img class="popup-img" src="images/StitchCuadros.webp" alt="Stitch Cuadros">
+          <img class="popup-img" src="images/PAnimadosAnimalPrint.webp" alt="Animal Print">
+          <img class="popup-img" src="images/PAnimadosBettyBoop.webp" alt="Betty Boop">
+          <img class="popup-img" src="images/PAnimadosCafe.webp" alt="Café">
+          <img class="popup-img" src="images/PAnimadosConejos.webp" alt="Conejos">
+        </div>
+        <h3>Pijamas Modal Soft Animados</h3>
+        <ul>
+          <li>✔️ <strong>Talle S</strong>: 36 al 40 de pantalón</li>
+          <li>✔️ <strong>Talle M</strong>: 42 al 46 de pantalón</li>
+          <li>✔️ <strong>Talle L</strong>: 48 al 50 de pantalón</li>
+          <li>✔️ <strong>Talle XL</strong>: 52 al 54 de pantalón</li>
+        </ul>
+        <p>💖 Detalles de los Pijamas 💖
+Nuestros conjuntos están confeccionados en tela modal soft importada y se componen de:
+👕 Remera manga corta
+👖 Short cómodo y suave</p>
+        <div class="precio">$18.000</div>
+        <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20comprar%20los%20Pijamas%20Modal%20Soft%20Animados">Comprar</a>
+      </div>
+    </section>
+  </main>
+
+  <a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Popup Modal para imágenes grandes -->
+  <div id="imgModal">
+    <button class="close-modal" title="Cerrar">&times;</button>
+    <img id="modalImg" src="" alt="Imagen ampliada">
+  </div>
+  <script>
+    // Modal popup para ampliar imágenes
+    document.querySelectorAll('.popup-img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        document.getElementById('modalImg').src = this.src;
+        document.getElementById('imgModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelector('#imgModal .close-modal').onclick = function(e) {
+      document.getElementById('imgModal').style.display = 'none';
+      document.getElementById('modalImg').src = '';
+      document.body.style.overflow = '';
+      e.stopPropagation();
+    };
+    document.getElementById('imgModal').onclick = function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    };
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){
+        document.getElementById('imgModal').style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Tienda Meiga – WhatsApp: 1138811121</p>
+  </footer>
+</body>
+</html>
