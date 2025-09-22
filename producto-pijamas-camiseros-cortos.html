@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pijamas Camiseros Cortos - Tienda Meiga</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffaf6;
+      color: #2d2d2d;
+    }
+    header {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #7f2352;
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav ul li {
+      position: relative;
+      margin: 0 18px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #7f2352;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover {
+      color: #d64c82;
+    }
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.08);
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+      min-width: 200px;
+      border-radius: 6px;
+      z-index: 10;
+    }
+    nav ul li ul li {
+      padding: 8px 20px;
+    }
+    nav ul li ul li a {
+      color: #7f2352;
+      font-weight: normal;
+      font-size: 1rem;
+    }
+    nav ul li:hover ul {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    main {
+      padding: 30px 20px 40px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .producto-titulo {
+      color: #d64c82;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 10px 0 16px 0;
+      scroll-behavior: smooth;
+      margin-bottom: 16px;
+    }
+    .carousel img {
+      height: 130px;
+      width: 130px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #f9e7f4;
+      box-shadow: 0 2px 10px rgba(127,35,82,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+      flex: 0 0 auto;
+    }
+    .carousel img:hover {
+      box-shadow: 0 4px 18px #d64c82aa;
+    }
+    .info-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(127,35,82,0.08);
+      padding: 30px;
+      max-width: 500px;
+      margin: 30px auto 0 auto;
+      text-align: center;
+    }
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+    }
+    .info-box ul li {
+      font-size: 1.03rem;
+      color: #7f2352;
+      background: #f9e7f4;
+      border-radius: 7px;
+      padding: 6px 10px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .info-box p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 18px;
+      white-space: pre-line;
+    }
+    .precio {
+      font-size: 1.15rem;
+      color: #d64c82;
+      font-weight: bold;
+      margin-bottom: 13px;
+    }
+    .boton {
+      display: inline-block;
+      padding: 13px 38px;
+      background: #f9a1bc;
+      color: #7f2352;
+      font-weight: bold;
+      font-size: 1.07rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      margin-top: auto;
+    }
+    .boton:hover {
+      background: #d64c82;
+      color: #fff;
+    }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+      z-index: 50;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .whatsapp-btn:hover {
+      background: #128c7e;
+    }
+    /* Modal styles */
+    #imgModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.2s;
+    }
+    #imgModal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px #000;
+      background: #fffaf6;
+    }
+    #imgModal .close-modal {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 2.1rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1100;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    footer {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      color: #7f2352;
+      text-align: center;
+      padding: 26px;
+      margin-top: 40px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    @media (max-width:900px) {
+      main { padding: 14px 7px 28px 7px; }
+      .carousel img { height: 90px; width: 90px; }
+      .producto-titulo { font-size: 1.2rem; }
+      .info-box { padding: 18px; }
+      .info-box ul li { font-size: 0.98rem; padding: 5px 7px;}
+    }
+    @media (max-width:600px) {
+      .carousel img { height: 70px; width: 70px; }
+      .info-box { padding: 11px; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>Tienda Meiga</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li>
+          <a href="#">Productos</a>
+          <ul>
+            <li><a href="producto-megaremeron.html">Mega Remerón</a></li>
+            <li><a href="producto-camisolin.html">Camisolín de Morley</a></li>
+            <li><a href="producto-musculosas.html">Musculosas</a></li>
+            <li><a href="producto-pijamas-modal-soft-animados.html">Pijamas Modal Soft Animados</a></li>
+            <li><a href="producto-pijamas-camiseros-cortos.html">Pijamas Camiseros Cortos</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Entrega Inmediata</a>
+          <ul>
+            <li><a href="producto-repasador.html">Repasador</a></li>
+            <li><a href="producto-lona-playera.html">Lona Playera</a></li>
+            <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
+
+          </ul>
+        </li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="producto-titulo">Pijamas Camiseros Cortos</h2>
+    <div class="carousel">
+      <img class="popup-img" src="images/CamiseroKittyPrint.webp" alt="Camisero Kitty Print">
+      <img class="popup-img" src="images/CamiseroKittyRosa.webp" alt="Camisero Kitty Rosa">
+      <img class="popup-img" src="images/CamiseroLeopardo.webp" alt="Camisero Leopardo">
+      <img class="popup-img" src="images/CamiseroMafalda.webp" alt="Camisero Mafalda">
+      <img class="popup-img" src="images/CamiseroMargaritaLila.webp" alt="Camisero Margarita Lila">
+      <img class="popup-img" src="images/CamiseroMarino.webp" alt="Camisero Marino">
+      <img class="popup-img" src="images/CamiseroMickeyFdoCrema.webp" alt="Camisero Mickey Fondo Crema">
+      <img class="popup-img" src="images/CamiseroMinnieRosa.webp" alt="Camisero Minnie Rosa">
+      <img class="popup-img" src="images/CamiseroMoñoRosa.webp" alt="Camisero Moño Rosa">
+      <img class="popup-img" src="images/CamiseroPaltaRosa.webp" alt="Camisero Palta Rosa">
+      <img class="popup-img" src="images/CamiseroPrintOscuro.webp" alt="Camisero Print Oscuro">
+      <img class="popup-img" src="images/CamiseroSnoopy.webp" alt="Camisero Snoopy">
+      <img class="popup-img" src="images/CamiseroStitchCrema.webp" alt="Camisero Stitch Crema">
+      <img class="popup-img" src="images/CamiseroVerde.webp" alt="Camisero Verde">
+      <img class="popup-img" src="images/CamiseroAnimalPrint.webp" alt="Camisero Animal Print">
+      <img class="popup-img" src="images/CamiseroAzul.webp" alt="Camisero Azul">
+      <img class="popup-img" src="images/CamiseroBlanco.webp" alt="Camisero Blanco">
+      <img class="popup-img" src="images/CamiseroConejoFdoBlanco.webp" alt="Camisero Conejo Fondo Blanco">
+      <img class="popup-img" src="images/CamiseroCorazonBlancoFdoCeleste.webp" alt="Camisero Corazón Blanco Fondo Celeste">
+      <img class="popup-img" src="images/CamiseroCorazonBlancoFdoNegro.webp" alt="Camisero Corazón Blanco Fondo Negro">
+      <img class="popup-img" src="images/CamiseroCorazonBlancoFdoRosa.webp" alt="Camisero Corazón Blanco Fondo Rosa">
+      <img class="popup-img" src="images/CamiseroCorazonesBlancosFdoBeige.webp" alt="Camisero Corazones Blancos Fondo Beige">
+      <img class="popup-img" src="images/CamiseroCorazonesBlancosFdoNaranja.webp" alt="Camisero Corazones Blancos Fondo Naranja">
+      <img class="popup-img" src="images/CamiseroCorazonesBlancosFdoVioleta.webp" alt="Camisero Corazones Blancos Fondo Violeta">
+      <img class="popup-img" src="images/CamiseroCorazonesNegrosFdoRosa.webp" alt="Camisero Corazones Negros Fondo Rosa">
+      <img class="popup-img" src="images/CamiseroCorazonesRojosFdoBlanco.webp" alt="Camisero Corazones Rojos Fondo Blanco">
+      <img class="popup-img" src="images/CamiseroFloreadoCrema.webp" alt="Camisero Floreado Crema">
+      <img class="popup-img" src="images/CamiseroFloresGrises.webp" alt="Camisero Flores Grises">
+      <img class="popup-img" src="images/CamiseroFloresNegro.webp" alt="Camisero Flores Negro">
+      <img class="popup-img" src="images/CamiseroFucsia.webp" alt="Camisero Fucsia">
+      <img class="popup-img" src="images/CamiseroHuellitas.webp" alt="Camisero Huellitas">
+    </div>
+    <div class="info-box">
+      <ul>
+        <li><strong>S</strong>: Short del 36 al 40</li>
+        <li><strong>M</strong>: Short del 42 al 46</li>
+        <li><strong>L</strong>: Short del 48 al 50</li>
+        <li><strong>XL</strong>: Short del 52 al 54</li>
+      </ul>
+      <p>💖 Detalles del Conjunto<br>
+      Camisa manga corta + short confeccionados en modal soft.<br>
+      🌟 Tela súper suave, elastizada y cómoda, ideal para estar fresca y con estilo.</p>
+      <div class="precio">$29.000</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20comprar%20Pijamas%20Camiseros%20Cortos">Comprar</a>
+    </div>
+  </main>
+
+  <a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Popup Modal para imágenes grandes -->
+  <div id="imgModal">
+    <button class="close-modal" title="Cerrar">&times;</button>
+    <img id="modalImg" src="" alt="Imagen ampliada">
+  </div>
+  <script>
+    // Modal popup para ampliar imágenes
+    document.querySelectorAll('.popup-img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        document.getElementById('modalImg').src = this.src;
+        document.getElementById('imgModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelector('#imgModal .close-modal').onclick = function(e) {
+      document.getElementById('imgModal').style.display = 'none';
+      document.getElementById('modalImg').src = '';
+      document.body.style.overflow = '';
+      e.stopPropagation();
+    };
+    document.getElementById('imgModal').onclick = function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    };
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){
+        document.getElementById('imgModal').style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <footer>
+    <p>
+      &copy; 2025 Tienda Meiga –
+      <a href="https://www.instagram.com/tiendameiga/" target="_blank" style="color:#7f2352; text-decoration:none;">
+        <i class="fab fa-instagram"></i> @tiendameiga
+      </a>
+    </p>
+  </footer>
+</body>
+</html>
