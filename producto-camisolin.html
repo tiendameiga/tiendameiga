@@ -228,12 +228,21 @@
       letter-spacing: 1px;
     }
     @media (max-width:700px) {
-      main { padding: 14px 7px 28px 7px; }
-      .carousel img { height: 160px; }
-      .info-box { padding: 18px; }
-      .producto-titulo { font-size: 1.2rem; }
-      .info-box ul li { font-size: 0.98rem; padding: 6px 7px;}
-    }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 20px;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+  nav ul li {
+    margin: 8px 0;
+  }
+}
+
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -361,6 +370,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
