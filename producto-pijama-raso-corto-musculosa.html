@@ -226,11 +226,10 @@
       margin-top: 40px;
       font-size: 1rem;
       letter-spacing: 1px;
-    }
-    @media (max-width:700px) { /* Asegúrate de que esta media query esté en tu CSS */
+        @media (max-width:700px) {
       header {
         flex-direction: column;
-        align-items: flex-start; /* Esto alinea el contenido a la izquierda */
+        align-items: flex-start; /* Esta línea es clave para alinear a la izquierda */
         padding: 14px 20px;
       }
       nav ul {
@@ -241,6 +240,13 @@
       nav ul li {
         margin: 8px 0;
       }
+      /* También es buena idea incluir estas para el resto del contenido en móvil */
+      main { padding: 14px 7px 28px 7px; }
+      .carousel img { height: 160px; }
+      .info-box { padding: 18px; }
+      .producto-titulo { font-size: 1.2rem; }
+      .info-box ul li { font-size: 0.98rem; padding: 6px 7px;} /* Si aplica a este producto */
+    }
       /* Aquí puedes agregar más ajustes para pantallas pequeñas si es necesario */
       main { padding: 14px 7px 28px 7px; }
       .carousel img { height: 160px; }
@@ -374,3 +380,4 @@
   </footer>
 </body>
 </html>
+
