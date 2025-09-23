@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Tienda Meiga</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffaf6;
+      color: #2d2d2d;
+    }
+    header {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #7f2352;
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav ul li {
+      position: relative;
+      margin: 0 18px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #7f2352;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover {
+      color: #d64c82;
+    }
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.08);
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+      min-width: 180px;
+      border-radius: 6px;
+      z-index: 10;
+    }
+    nav ul li ul li {
+      padding: 8px 20px;
+    }
+    nav ul li ul li a {
+      color: #7f2352;
+      font-weight: normal;
+      font-size: 1rem;
+    }
+    nav ul li:hover ul {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    main {
+      padding: 30px 20px 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .contacto-titulo {
+      color: #d64c82;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .info-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(127,35,82,0.08);
+      padding: 30px;
+      max-width: 500px;
+      margin: 30px auto 0 auto;
+      text-align: center;
+    }
+    .info-box p {
+      margin: 15px 0;
+      font-size: 1.1rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .info-box a {
+      text-decoration: none;
+      color: #7f2352;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    .info-box a:hover {
+      color: #d64c82;
+    }
+    .info-box i {
+      font-size: 1.5rem;
+      color: #f9a1bc;
+    }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+      z-index: 50;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .whatsapp-btn:hover {
+      background: #128c7e;
+    }
+    footer {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      color: #7f2352;
+      text-align: center;
+      padding: 26px;
+      margin-top: 40px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    @media (max-width:700px) {
+      main { padding: 14px 7px 28px 7px; }
+      .info-box { padding: 18px; }
+      .contacto-titulo { font-size: 1.8rem; }
+      .info-box p { font-size: 1rem; }
+      .info-box i { font-size: 1.3rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<header>
+  <h1>Tienda Meiga</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li>
+        <a href="#">Pijamas</a>
+        <ul>
+	      <li><a href="producto-camisolin.html">Camisolín de Morley</a></li>
+          <li><a href="producto-pijama-raso-corto-musculosa.html">Pijama Raso Corto Musculosa</a></li>
+          <li><a href="producto-pijama-modal-soft-animados.html">Pijama Modal Soft Animados</a></li>
+          <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
+          <li><a href="producto-pijama-camiseros-cortos.html">Pijama Camiseros Cortos</a></li>
+          <li><a href="producto-pijama-morley-corto-musculosa.html">Pijama Morley Corto Con Musculosa</a></li>
+          <li><a href="producto-pijama-corto-modalsoft-manga-corta.html">Pijama Corto ModalSoft Manga Corta</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Indumentaria</a>
+        <ul>
+          <li><a href="producto-megaremeron.html">Mega Remerón</a></li>
+          <li><a href="producto-musculosas.html">Musculosas</a></li>
+          <li><a href="producto-pantalon-lino.html">Pantalón de Lino</a></li>
+          <!-- Agrega más productos de indumentaria aquí -->
+        </ul>
+      </li>
+      <li>
+        <a href="#">Hogar</a>
+        <ul>
+          <!-- Aquí puedes agregar productos de Hogar cuando los tengas -->
+           <li><a href="producto-lonaa-playera.html">Lona Playera 150x50</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Entrega Inmediata</a>
+        <ul>
+          <li><a href="producto-repasador.html">Repasador</a></li>
+          <li><a href="producto-lona-playera.html">Lona Playera</a></li>
+          <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
+        </ul>
+      </li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <main>
+    <h2 class="contacto-titulo">¡Contáctanos!</h2>
+    <div class="info-box">
+      <p>
+        <i class="fab fa-instagram"></i>
+        Instagram: <a href="https://www.instagram.com/tiendameiga/" target="_blank">@tiendameiga</a>
+      </p>
+      <p>
+        <i class="fab fa-facebook"></i>
+        Facebook: <a href="https://www.facebook.com/tiendameiga" target="_blank">Tienda Meiga</a>
+      </p>
+      <p>
+        <i class="fab fa-whatsapp"></i>
+        WhatsApp: <a href="https://wa.me/541138811121" target="_blank">1138811121</a>
+      </p>
+      <p>
+        <i class="fab fa-whatsapp"></i>
+        Canal de difusión: <a href="https://whatsapp.com/channel/0029VatZtlrGU3BL4gN5SC0Q" target="_blank">Tienda Meiga</a>
+      </p>
+    </div>
+  </main>
+
+  <a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <footer>
+    <p>
+      &copy; 2025 Tienda Meiga –
+      <a href="https://www.instagram.com/tiendameiga/" target="_blank" style="color:#7f2352; text-decoration:none;">
+        <i class="fab fa-instagram"></i> @tiendameiga
+      </a>
+    </p>
+  </footer>
+</body>
+</html>
