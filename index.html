@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Meiga</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffaf6;
+      color: #2d2d2d;
+    }
+    header {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #7f2352;
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav ul li {
+      position: relative;
+      margin: 0 18px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #7f2352;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover {
+      color: #d64c82;
+    }
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.08);
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+      min-width: 180px;
+      border-radius: 6px;
+      z-index: 10;
+    }
+    nav ul li ul li {
+      padding: 8px 20px;
+    }
+    nav ul li ul li a {
+      color: #7f2352;
+      font-weight: normal;
+      font-size: 1rem;
+    }
+    nav ul li:hover ul {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+      /* Imagen abstracta en colores pasteles */
+      color: #fff;
+      padding: 90px 0 60px 0;
+      text-align: center;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(127,35,82,0.30);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h2 {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 14px rgba(127,35,82,0.17);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+      text-shadow: 0 2px 14px rgba(127,35,82,0.13);
+    }
+    .cta-btn {
+      background: #f9a1bc;
+      color: #7f2352;
+      padding: 14px 38px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .cta-btn:hover {
+      background: #d64c82;
+      color: #fff;
+    }
+    .productos-destacados,
+    .entrega-inmediata-list {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 50px 0 40px 0;
+      flex-wrap: wrap;
+    }
+    .producto-card,
+    .entrega-inmediata-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(127,35,82,0.08);
+      padding: 22px;
+      width: 220px;
+      text-align: center;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .producto-card:hover,
+    .entrega-inmediata-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 24px rgba(127,35,82,0.16);
+    }
+    .producto-card img,
+    .entrega-inmediata-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 13px;
+    }
+    .producto-card h3,
+    .entrega-inmediata-card h3 {
+      margin: 10px 0 7px 0;
+      font-size: 1.1rem;
+      color: #7f2352;
+    }
+    .producto-card p,
+    .entrega-inmediata-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 12px;
+      flex-grow: 1; /* Para que las descripciones tengan altura flexible */
+    }
+    .producto-card a,
+    .entrega-inmediata-card a {
+      text-decoration: none;
+      color: #d64c82;
+      font-weight: bold;
+      font-size: 0.97rem;
+      margin-top: auto; /* Empuja el enlace hacia abajo */
+    }
+    .entrega-inmediata-section {
+      background: #f9f6fb;
+      border-top: 2px solid #f1c8db;
+      padding: 40px 0 30px 0;
+      margin-top: 55px;
+    }
+    .entrega-inmediata-section h2 {
+      text-align: center;
+      color: #7f2352;
+      margin-bottom: 28px;
+      font-size: 1.35rem;
+      letter-spacing: 1px;
+    }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+      z-index: 50;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .whatsapp-btn:hover {
+      background: #128c7e;
+    }
+    footer {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      color: #7f2352;
+      text-align: center;
+      padding: 26px;
+      margin-top: 40px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+   @media (max-width:700px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 14px 20px;
+    }
+    nav ul {
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+    }
+    nav ul li {
+      margin: 8px 0;
+    }
+  }
+
+  </style>
+  <!-- Icono WhatsApp -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<header>
+  <h1>Tienda Meiga</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li>
+        <a href="#">Pijamas</a>
+        <ul>
+	  <li><a href="producto-camisolin.html">Camisolín de Morley</a></li>
+          <li><a href="producto-pijama-raso-corto-musculosa.html">Pijama Raso Corto Musculosa</a></li>
+          <li><a href="producto-pijama-modal-soft-animados.html">Pijamas Modal Soft Animados</a></li>
+          <li><a href="producto-pijama-camiseros-cortos.html">Pijamas Camiseros Cortos</a></li>
+          <li><a href="producto-pijama-morley-corto-musculosa.html">Pijama Morley Corto Con Musculosa</a></li>
+          <li><a href="producto-pijama-corto-modalsoft-manga-corta.html">Pijama Corto ModalSoft Manga Corta</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Indumentaria</a>
+        <ul>
+          <li><a href="producto-megaremeron.html">Mega Remerón</a></li>
+          <li><a href="producto-musculosas.html">Musculosas</a></li>
+		  <li><a href="producto-pantalon-lino.html">Pantalón de Lino</a></li>
+        </ul>
+      </li>
+      <li>
+		  <a href="#">Infantil</a>
+        <ul>
+		<li><a href="producto-pijama-modal-soft-corto-infantil.html">Pijama Modal Soft Corto Animado</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Hogar</a>
+        <ul>
+         <li><a href="producto-lonaa-playera.html">Lona Playera 150x150</a></li>
+           <li><a href="producto-megatoallon.html">MegaToallón 150x150</a></li>  
+			<li><a href="producto-toallon-73-150.html">Toallón 73x150</a></li>
+			<li><a href="producto-repasador-individual.html">Repasador/Individual</a></li> 
+        </ul>
+      </li>
+      <li>
+        <a href="#">Entrega Inmediata</a>
+        <ul>
+          <li><a href="producto-repasador.html">Repasador</a></li>
+          <li><a href="producto-lona-playera.html">Lona Playera</a></li>
+          <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
+        </ul>
+      </li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Bienvenid@ a Tienda Meiga ✨</h2>
+      <p>Encontrá los mejores productos de indumentaria y hogar. Calidad, diseño y amor en cada detalle.</p>
+      <a href="entrega_inmediata.html" class="cta-btn">Ver Productos</a>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center; margin-top:40px; color:#d64c82;">Productos Destacados</h2>
+    <div class="productos-destacados">
+      <div class="producto-card">
+        <img class="carousel-img" data-images='["images/Tom&JerryFdoNegro.webp", "images/BabyStitch.webp", "images/BettyB&W.webp"]' src="images/Tom&JerryFdoNegro.webp" alt="Mega Remerón">
+        <h3>Mega Remerón</h3>
+        <p>Super cómodo, ideal para tu día a día. ¡Varios colores y diseños animados!</p>
+        <a href="producto-megaremeron.html">Ver más</a>
+      </div>
+      <div class="producto-card">
+        <img class="carousel-img" data-images='["images/PAnimadosGalaxia.webp", "images/PAnimadosMickeyClasico.webp", "images/PAnimadosMariposas.webp"]' src="images/PAnimadosGalaxia.webp" alt="Pijama Modal Soft Animado">
+        <h3>Pijamas Modal Soft Animados</h3>
+        <p>Remera manga corta + short. Tela súper suave, elastizada y cómoda, con estampados divertidos.</p>
+        <a href="producto-pijama-modal-soft-animados.html">Ver más</a>
+      </div>
+      <div class="producto-card">
+        <img class="carousel-img" data-images='["images/Toallon73x150TortugaFdoBlanco.webp", "images/Toallon73x150Capibara.webp", "images/Toallon73x150Messi.webp"]' src="images/Toallon73x150TortugaFdoBlanco.webp" alt="Toallón Animado 73x150">
+        <h3>Toallón Animado 73x150</h3>
+        <p>Microtoalla sublimada full print. ¡Súper liviana, absorbente y no decolora!</p>
+        <a href="producto-toallon-73-150.html">Ver más</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="entrega-inmediata-section">
+    <h2>Entrega inmediata</h2>
+    <div class="entrega-inmediata-list">
+      <div class="entrega-inmediata-card">
+        <img class="carousel-img" data-images='["images/IMG_20250826_201750.webp", "images/IMG_20250826_201558.webp", "images/IMG_20250826_201642.webp"]' src="images/IMG_20250826_201750.webp" alt="Repasador">
+        <h3>Repasador/Individual</h3>
+        <p>¡Dale color a tu cocina! Microtoalla 50x40 cm. Modelos exclusivos. ¡Listo para entrega inmediata!</p>
+        <a href="producto-repasador.html">Ver más</a>
+      </div>
+      <div class="entrega-inmediata-card">
+        <img class="carousel-img" data-images='["images/Flores1.webp", "images/Conejitos1.webp"]' src="images/Flores1.webp" alt="Pijama Camisero Modal Soft">
+        <h3>Pijama Camisero Modal Soft</h3>
+        <p>Camisa manga corta + short. Tela súper suave, elastizada y cómoda, ideal para estar fresca y con estilo.</p>
+        <a href="producto-pijama-camisero.html">Ver más</a>
+      </div>
+    </div>
+  </section>
+
+  <a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <p>
+      &copy; 2025 Tienda Meiga –
+      <a href="https://www.instagram.com/tiendameiga/" target="_blank" style="color:#7f2352; text-decoration:none;">
+        <i class="fab fa-instagram"></i> @tiendameiga
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const carouselImages = document.querySelectorAll('.carousel-img');
+
+      carouselImages.forEach(img => {
+        const images = JSON.parse(img.dataset.images);
+        let currentIndex = 0;
+
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % images.length;
+          img.src = images[currentIndex];
+        }, 3000); // Cambia cada 3 segundos (3000 ms)
+      });
+    });
+  </script>
+</body>
+</html>
