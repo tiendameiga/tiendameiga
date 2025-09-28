@@ -12,15 +12,30 @@
       padding: 0;
       background: #fffaf6;
       color: #2d2d2d;
-    }
-    header {
-      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
+   header {
+  position: relative;
+  background: url('images/BannerPagina.png') center/cover no-repeat;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  z-index: 1;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6); /* overlay blanco translúcido */
+  z-index: -1; /* queda detrás del contenido */
+}
+
+header h1,
+header nav {
+  position: relative; /* asegura que el texto quede arriba del overlay */
+  z-index: 2;
+}
     h1 {
       font-size: 2rem;
       letter-spacing: 2px;
@@ -269,6 +284,7 @@
 </body>
 
 </html>
+
 
 
 
