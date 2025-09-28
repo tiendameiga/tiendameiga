@@ -226,50 +226,31 @@
       margin-top: 40px;
       font-size: 1rem;
       letter-spacing: 1px;
-    }
-
-    /* Media queries for responsiveness */
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 14px 20px;
       }
-      nav ul {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-      }
-      nav ul li {
-        margin: 8px 0;
-      }
-      nav ul li ul { /* Ensure dropdowns also align correctly on mobile */
-        position: static; /* Change to static for better mobile flow */
-        box-shadow: none;
-        border-radius: 0;
-        min-width: unset;
-        background: none; /* Make background transparent or match parent */
-      }
-      nav ul li ul li {
-        padding: 5px 0 5px 20px; /* Indent sub-items */
-      }
-      main {
-        padding: 14px 7px 28px 7px;
-      }
-      .carousel img {
-        height: 160px; /* Smaller images on mobile */
-      }
-      .info-box {
-        padding: 18px;
-      }
-      .producto-titulo {
-        font-size: 1.2rem;
-      }
-      .info-box ul li {
-        font-size: 0.98rem;
-        padding: 6px 7px;
-      }
-    }
+       @media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 20px;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+  nav ul li {
+    margin: 8px 0;
+  }
+  nav ul li ul { /* Submenús en móvil */
+    position: static;       /* Que se ubiquen como parte de la lista */
+    box-shadow: none;       /* Sin sombra flotante */
+    border-radius: 0;
+    min-width: unset;       /* Que se adapten al ancho disponible */
+    background: none;       /* Fondo transparente o igual al padre */
+  }
+  nav ul li ul li {
+    padding: 5px 0 5px 20px; /* Indentado de los sub-items */
+  }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -412,6 +393,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
