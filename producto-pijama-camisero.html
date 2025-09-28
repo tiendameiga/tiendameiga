@@ -228,8 +228,8 @@
       margin-top: 40px;
       font-size: 1rem;
       letter-spacing: 1px;
-   }
-    @media (max-width:700px) {
+    }
+       @media (max-width: 700px) {
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -242,6 +242,16 @@
   }
   nav ul li {
     margin: 8px 0;
+  }
+  nav ul li ul { /* Submenús en móvil */
+    position: static;       /* Que se ubiquen como parte de la lista */
+    box-shadow: none;       /* Sin sombra flotante */
+    border-radius: 0;
+    min-width: unset;       /* Que se adapten al ancho disponible */
+    background: none;       /* Fondo transparente o igual al padre */
+  }
+  nav ul li ul li {
+    padding: 5px 0 5px 20px; /* Indentado de los sub-items */
   }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -388,6 +398,7 @@ Talle: L (Short del 48 al 50)</p>
   </footer>
 </body>
 </html>
+
 
 
 
