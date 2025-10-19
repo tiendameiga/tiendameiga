@@ -150,14 +150,19 @@
     .entrega-inmediata-card:hover {
       transform: translateY(-8px) scale(1.04);
       box-shadow: 0 8px 24px rgba(127,35,82,0.16);
-  .producto-card img,
+		  }
+.producto-card img,
     .entrega-inmediata-card img {
-      width: 100%; /* O puedes probar con un valor fijo como 200px si quieres que sean más grandes que el 100% de la tarjeta */
-      height: auto; /* ¡Esto es clave! Permite que la altura se ajuste automáticamente */
-      max-height: 200px; /* Puedes agregar un máximo si no quieres que sean excesivamente altas */
-      object-fit: contain; /* Cambiar a 'contain' para que la imagen completa sea visible */
+      width: auto; /* Dejamos que el ancho se ajuste automáticamente */
+      max-width: 100%; /* Aseguramos que no se salga de la tarjeta */
+      height: 180px; /* Establecemos una altura máxima controlada */
+      object-fit: contain; /* Para que la imagen se vea completa */
       border-radius: 10px;
       margin-bottom: 13px;
+      /* Esto centrará la imagen horizontalmente si es más estrecha que el 100% del contenedor */
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     .producto-card h3,
     .entrega-inmediata-card h3 {
@@ -386,6 +391,7 @@
 </body>
 
 </html>
+
 
 
 
