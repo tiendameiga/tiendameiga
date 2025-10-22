@@ -150,14 +150,19 @@
     .entrega-inmediata-card:hover {
       transform: translateY(-8px) scale(1.04);
       box-shadow: 0 8px 24px rgba(127,35,82,0.16);
-    }
-    .producto-card img,
+		  }
+.producto-card img,
     .entrega-inmediata-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
+      width: auto; /* Dejamos que el ancho se ajuste automáticamente */
+      max-width: 100%; /* Aseguramos que no se salga de la tarjeta */
+      height: 180px; /* Establecemos una altura máxima controlada */
+      object-fit: contain; /* Para que la imagen se vea completa */
       border-radius: 10px;
       margin-bottom: 13px;
+      /* Esto centrará la imagen horizontalmente si es más estrecha que el 100% del contenedor */
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     .producto-card h3,
     .entrega-inmediata-card h3 {
@@ -317,19 +322,19 @@
     <h2 style="text-align:center; margin-top:40px; color:#d64c82;">Productos Destacados</h2>
     <div class="productos-destacados">
       <div class="producto-card">
-        <img class="carousel-img" data-images='["images/Tom&JerryFdoNegro.webp", "images/BabyStitch.webp", "images/BettyB&W.webp"]' src="images/Tom&JerryFdoNegro.webp" alt="Mega Remerón">
-        <h3>Mega Remerón</h3>
+        <img class="carousel-img" data-images='["images/CamiseroModalSoftLiloStitchRosa.webp", "images/CamiseroModalSoftFlores.webp", "images/CamiseroModalSoftMickeyManosZapatos.webp"]' src="images/CamiseroModalSoftLiloStitchRosa.webp" alt="Pijama Camisero Corto">
+        <h3>Pijama Camisero Corto</h3>
         <p>Super cómodo, ideal para tu día a día. ¡Varios colores y diseños animados!</p>
-        <a href="producto-megaremeron.html">Descubrilos! 🙃</a>
+        <a href="producto-pijama-camiseros-cortos.html">Descubrilos! 🙃</a>
       </div>
       <div class="producto-card">
-        <img class="carousel-img" data-images='["images/PAnimadosGalaxia.webp", "images/PAnimadosMickeyClasico.webp", "images/PAnimadosMariposas.webp"]' src="images/PAnimadosGalaxia.webp" alt="Pijama Modal Soft Animado">
+        <img class="carousel-img" data-images='["images/CortoModalCLycraBillyMandy.webp", "images/CortoModalCLycraGatoAlicia.webp", "images/CortoModalCLycraLisa.webp"]' src="images/CortoModalCLycraBillyMandy.webp" alt="Pijama Modal Soft Animado">
         <h3>Pijamas Modal Soft Animados</h3>
         <p>Remera manga corta + short. Tela súper suave, elastizada y cómoda, con estampados divertidos.</p>
         <a href="producto-pijama-modal-soft-animados.html">Descubrilos! 🙃</a>
       </div>
       <div class="producto-card">
-        <img class="carousel-img" data-images='["images/Toallon73x150TortugaFdoBlanco.webp", "images/Toallon73x150Capibara.webp", "images/Toallon73x150Messi.webp"]' src="images/Toallon73x150TortugaFdoBlanco.webp" alt="Toallón Animado 73x150">
+        <img class="carousel-img" data-images='["images/Toallon73x150DragonBall.webp", "images/Toallon73x150Jurassic.webp", "images/Toallon73x150LabubuVioleta.webp"]' src="images/Toallon73x150DragonBall.webp" alt="Toallón Animado 73x150">
         <h3>Toallón Animado 73x150</h3>
         <p>Microtoalla sublimada full print. ¡Súper liviana, absorbente y no decolora!</p>
         <a href="producto-toallon-73-150.html">Descubrilos! 🙃</a>
@@ -341,14 +346,14 @@
     <h2>Entrega inmediata</h2>
     <div class="entrega-inmediata-list">
       <div class="entrega-inmediata-card">
-        <img class="carousel-img" data-images='["images/IMG_20250826_201750.webp", "images/IMG_20250826_201558.webp", "images/IMG_20250826_201642.webp"]' src="images/IMG_20250826_201750.webp" alt="Repasador">
+        <img class="carousel-img" data-images='["images/IMG_20250826_201722.webp", "images/IMG_20250826_201642.webp"]' src="images/IMG_20250826_201722.webp" alt="Repasador">
         <h3>Repasador/Individual</h3>
         <p>¡Dale color a tu cocina! Microtoalla 50x40 cm. Modelos exclusivos. ¡Listo para entrega inmediata!</p>
         <a href="producto-repasador.html">Tiene que ser mio! 🤗</a>
       </div>
       <div class="entrega-inmediata-card">
-        <img class="carousel-img" data-images='["images/Flores1.webp", "images/Conejitos1.webp"]' src="images/Flores1.webp" alt="Pijama Camisero Modal Soft">
-        <h3>Pijama Camisero Modal Soft</h3>
+<img class="carousel-img" data-images='["images/Conejitos1.webp"]' src="images/Conejitos1.webp" alt="Pijama Camisero Modal Soft">
+		  <h3>Pijama Camisero Modal Soft</h3>
         <p>Camisa manga corta + short. Tela súper suave, elastizada y cómoda, ideal para estar fresca y con estilo.</p>
         <a href="producto-pijama-camisero.html">Tiene que ser mio! 🤗</a>
       </div>
@@ -386,6 +391,17 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
