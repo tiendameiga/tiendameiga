@@ -78,99 +78,71 @@
     }
     main {
       padding: 30px 20px 40px 20px;
-      max-width: 900px; /* Ancho ajustado para la página de producto */
+      max-width: 900px;
       margin: 0 auto;
     }
-    .product-detail-container {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(127,35,82,0.08);
-      padding: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-    }
-    .product-images {
-      flex: 1;
-      min-width: 300px;
-      max-width: 450px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .product-main-image {
-      width: 100%;
-      height: 350px; /* Ajusta la altura de la imagen principal */
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 10px rgba(127,35,82,0.07);
-      cursor: pointer;
-      background: #f9e7f4;
-    }
-    .product-thumbnails {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      max-width: 100%;
-    }
-    .product-thumbnails img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: border-color 0.2s;
-    }
-    .product-thumbnails img:hover,
-    .product-thumbnails img.active {
-      border-color: #d64c82;
-    }
-    .product-info {
-      flex: 1;
-      min-width: 300px;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .product-info h2 {
+    .producto-titulo {
+      color: #d64c82;
       font-size: 2rem;
-      color: #7f2352;
-      margin-top: 0;
-      margin-bottom: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 1px;
     }
-    .product-info .precio {
-      font-size: 1.8rem;
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 10px 0 16px 0;
+      scroll-behavior: smooth;
+    }
+    .carousel img {
+      height: 260px;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(127,35,82,0.11);
+      background: #fff;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .carousel img:hover {
+      box-shadow: 0 4px 18px #d64c82aa;
+    }
+    .info-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(127,35,82,0.08);
+      padding: 30px;
+      max-width: 500px;
+      margin: 30px auto 0 auto;
+      text-align: center;
+    }
+    .info-box p {
+      margin: 12px 0 20px 0;
+      font-size: 1.05rem;
+      color: #555;
+    }
+    .info-box strong {
+      color: #7f2352;
+    }
+    .precio {
+      font-size: 1.3rem;
       color: #d64c82;
       font-weight: bold;
-      margin-bottom: 20px;
-    }
-    .product-info p {
-      font-size: 1.1rem;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      white-space: pre-wrap; /* Para respetar saltos de línea en la descripción */
+      margin-bottom: 18px;
     }
     .boton {
       display: inline-block;
-      padding: 15px 45px;
+      margin-top: 10px;
+      padding: 13px 38px;
       background: #f9a1bc;
       color: #7f2352;
       font-weight: bold;
-      font-size: 1.15rem;
+      font-size: 1.07rem;
       border-radius: 30px;
       text-decoration: none;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       transition: background 0.2s;
       border: none;
       cursor: pointer;
-      text-align: center;
-      margin-top: auto; /* Empuja el botón hacia abajo si hay espacio */
     }
     .boton:hover {
       background: #d64c82;
@@ -239,134 +211,121 @@
       font-size: 1rem;
       letter-spacing: 1px;
     }
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 14px 20px;
-      }
-      nav ul {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-      }
-      nav ul li {
-        margin: 8px 0;
-      }
-      nav ul li ul {
-        position: static;
-        box-shadow: none;
-        border-radius: 0;
-        min-width: unset;
-        background: none;
-      }
-      nav ul li ul li {
-        padding: 5px 0 5px 20px;
-      }
-      .product-detail-container {
-        flex-direction: column;
-        padding: 20px;
-      }
-      .product-images, .product-info {
-        min-width: unset;
-        max-width: 100%;
-      }
-      .product-main-image {
-        height: 280px;
-      }
-    }
+       @media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 20px;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+  nav ul li {
+    margin: 8px 0;
+  }
+  nav ul li ul { /* Submenús en móvil */
+    position: static;       /* Que se ubiquen como parte de la lista */
+    box-shadow: none;       /* Sin sombra flotante */
+    border-radius: 0;
+    min-width: unset;       /* Que se adapten al ancho disponible */
+    background: none;       /* Fondo transparente o igual al padre */
+  }
+  nav ul li ul li {
+    padding: 5px 0 5px 20px; /* Indentado de los sub-items */
+  }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>Tienda Meiga</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li>
-          <a href="#">Pijamas</a>
-          <ul>
-            <li><a href="producto-pijama-raso-corto-musculosa.html">Pijama Raso Corto Musculosa</a></li>
-            <li><a href="producto-pijama-modal-soft-animados.html">Pijama Modal Soft Animados</a></li>
-            <li><a href="producto-pijama-camiseros-cortos.html">Pijama Camiseros Cortos</a></li>
-            <li><a href="producto-pijama-morley-corto-musculosa.html">Pijama Morley Corto Con Musculosa</a></li>
-            <li><a href="producto-pijama-corto-modalsoft-manga-corta.html">Pijama Corto ModalSoft Manga Corta</a></li>
-            <li><a href="producto-pijama-top-short.html">Pijama Top + Short</a></li>
-            <li><a href="producto-pijama-top-morley.html">Pijama Top Morley</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Indumentaria</a>
-          <ul>
-            <li><a href="producto-megaremeron.html">Mega Remerón</a></li>
-          </ul>
-        </li>
-        <li>
+<header>
+  <h1>Tienda Meiga</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li>
+        <a href="#">Pijamas</a>
+        <ul>
+	  <li><a href="producto-camisolin.html">Camisolín de Morley</a></li>
+          <li><a href="producto-pijama-raso-corto-musculosa.html">Pijama Raso Corto Musculosa</a></li>
+          <li><a href="producto-pijama-modal-soft-animados.html">Pijama Modal Soft Animados</a></li>
+          <li><a href="producto-pijama-camiseros-cortos.html">Pijama Camiseros Cortos</a></li>
+          <li><a href="producto-pijama-morley-corto-musculosa.html">Pijama Morley Corto Con Musculosa</a></li>
+          <li><a href="producto-pijama-corto-modalsoft-manga-corta.html">Pijama Corto ModalSoft Manga Corta</a></li>
+          <li><a href="producto-pijama-top-short.html">Pijama Top + Short</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Indumentaria</a>
+        <ul>
+          <li><a href="producto-megaremeron.html">Mega Remerón</a></li>
+          <li><a href="producto-musculosas.html">Musculosas</a></li>
+	  <li><a href="producto-pantalon-lino.html">Pantalón de Lino</a></li>
+          <li><a href="producto-conjunto-triangulito.html">Conjunto Triangulito + Less Regulable</a></li>
+          <!-- Agrega más productos de indumentaria aquí -->
+        </ul>
+      </li>
+      <li>
           <a href="#">Infantil</a>
-          <ul>
-            <li><a href="producto-pijama-modal-soft-corto-infantil.html">Pijama Modal Soft Corto Animado</a></li>
-            <li><a href="producto-pijama-corto-kids.html">Pijama Corto KIDS</a></li>
-            <!-- Aquí puedes agregar productos de Infantil cuando los tengas -->
-          </ul>
-        </li>
-        <li>
-          <a href="#">Hogar</a>
-          <ul>
-            <!-- Aquí puedes agregar productos de Hogar cuando los tengas -->
-            <li><a href="producto-lonaa-playera.html">Lona Playera 150x150</a></li>
-            <li><a href="producto-megatoallon.html">MaxiToallón 150x150</a></li>
-            <li><a href="producto-toallon-73-150.html">Toallón 73x150</a></li>
-            <li><a href="producto-repasador-individual.html">Repasador/Individual</a></li>
-            <li><a href="producto-set-3-piezas-santel.html">Set 3 Piezas SANTEL</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Entrega Inmediata</a>
-          <ul>
-            <li><a href="producto-repasador.html">Repasador</a></li>
-            <li><a href="producto-lona-playera.html">Lona Playera</a></li>
-            <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
-            <li><a href="producto-conjunto-triangulito-less.html">Conjunto Triangulito + Less Regulable</a></li>
-          </ul>
-        </li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
+        <ul>
+           <li><a href="producto-pijama-modal-soft-corto-infantil.html">Pijama Modal Soft Corto Animado</a></li>
+           <li><a href="producto-pijama-corto-kids.html">Pijama Corto KIDS</a></li>
+
+          <!-- Aquí puedes agregar productos de Infantil cuando los tengas -->
+        </ul>
+      </li>
+      <li>
+        <a href="#">Hogar</a>
+        <ul>
+          <!-- Aquí puedes agregar productos de Hogar cuando los tengas -->
+           <li><a href="producto-lonaa-playera.html">Lona Playera 150x150</a></li>
+           <li><a href="producto-megatoallon.html">MaxiToallón 150x150</a></li>
+	   <li><a href="producto-toallon-73-150.html">Toallón 73x150</a></li>
+           <li><a href="producto-repasador-individual.html">Repasador/Individual</a></li>
+           <li><a href="producto-maxi-toallon-redondo.html">MaxiToallon Redondo Animado 150x150</a></li>
+           <li><a href="producto-set-3-piezas-santel.html">Set 3 Piezas SANTEL</a></li>
+
+        </ul>
+      </li>
+      <li>
+        <a href="#">Entrega Inmediata</a>
+        <ul>
+          <li><a href="producto-repasador.html">Repasador</a></li>
+          <li><a href="producto-lona-playera.html">Lona Playera</a></li>
+          <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
+        </ul>
+      </li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
 
   <main>
-    <div class="product-detail-container">
-<div class="carousel product-thumbnails">
-  <img src="images/WhatsApp Image 2025-10-18 at 13.43.03.jpeg" alt="Miniatura 1" class="popup-img active">
-  <img src="images/IMG_20251015_141757.JPG" alt="Miniatura 2" class="popup-img">
-  <img src="images/IMG_20251015_143247.JPG" alt="Miniatura 3" class="popup-img">
-  <img src="images/IMG_20251015_143400.JPG" alt="Miniatura 4" class="popup-img">
-  <img src="images/IMG_20251015_143527.JPG" alt="Miniatura 5" class="popup-img">
-  <img src="images/IMG_20251015_143651.JPG" alt="Miniatura 6" class="popup-img">
-  <img src="images/IMG_20251015_143729.JPG" alt="Miniatura 7" class="popup-img">
-  <img src="images/IMG_20251015_143827.JPG" alt="Miniatura 8" class="popup-img">
-  <img src="images/IMG_20251015_143859.JPG" alt="Miniatura 9" class="popup-img">
-  <img src="images/IMG_20251015_144617.JPG" alt="Miniatura 10" class="popup-img">
-  <img src="images/IMG_20251015_144733.JPG" alt="Miniatura 11" class="popup-img">
-  <img src="images/IMG_20251015_144803.JPG" alt="Miniatura 12" class="popup-img">
-</div>
-      </div>
-      <div class="product-info">
-        <h2>Conjunto Triangulito + Less Regulable</h2>
-        <div class="precio">$10.000*</div>
-        <p>
-          👙 Medidas de talles:<br>
-          Talle 1 - 85/90<br>
-          Talle 2 - 90/95<br>
-          Talle 3 - 95/100
-          <br><br>
-          Son talles amplios. Los avíos son de plástico.<br>
-          Forro interno 100% algodón (zona íntima).
-        </p>
-        <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20consultar%20por%20el%20Conjunto%20Triangulito%20%2B%20Less%20Regulable">Consultar por WhatsApp</a>
-        <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
-      </div>
+    <h2 class="producto-titulo">Conjunto Triangulito + Less Regulable</h2>
+    <div class="carousel">
+      <img class="popup-img" src="images/IMG_20251015_143400.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_143247.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_143651.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_143859.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_144803.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_144733.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_144658.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_144617.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_143729.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_143527.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/IMG_20251015_141757.jpg" alt="Conjunto Triangulito">
+      <img class="popup-img" src="images/WhatsApp Image 2025-10-18 at 13.43.03.jpeg" alt="Conjunto Triangulito">
+    </div>
+    <div class="info-box">
+      <p><strong>Medidas de talles:</strong></p>
+      <p>Talle 1 - 85/90</p>
+      <p>Talle 2 - 90/95</p>
+      <p>Talle 3 - 95/100</p>
+      <p>Son talles amplios. Los avíos son de plástico.</p>
+      <p>Forro interno 100% algodón (zona íntima).</p>
+      <div class="precio">$10.000</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20del%20Conjunto%20Triangulito%20+%20Less%20Regulable">Consultar por WhatsApp</a>
     </div>
   </main>
 
@@ -380,19 +339,7 @@
     <img id="modalImg" src="" alt="Imagen ampliada">
   </div>
   <script>
-    // Lógica para cambiar la imagen principal al hacer clic en las miniaturas
-    const mainImage = document.querySelector('.product-main-image');
-    const thumbnails = document.querySelectorAll('.product-thumbnails img');
-
-    thumbnails.forEach(thumbnail => {
-      thumbnail.addEventListener('click', () => {
-        mainImage.src = thumbnail.src;
-        thumbnails.forEach(t => t.classList.remove('active'));
-        thumbnail.classList.add('active');
-      });
-    });
-
-    // Modal popup para ampliar imágenes (existente)
+    // Modal popup para ampliar imágenes
     document.querySelectorAll('.popup-img').forEach(function(img) {
       img.addEventListener('click', function() {
         document.getElementById('modalImg').src = this.src;
