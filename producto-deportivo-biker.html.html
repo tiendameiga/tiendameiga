@@ -109,13 +109,49 @@
       transform: translateY(-8px);
       box-shadow: 0 6px 25px #d64c82aa;
     }
-    .producto-card img {
-      max-width: 100%;
+
+    /* Estilos para el carrusel dentro de cada tarjeta */
+    .producto-card .mini-carousel {
+      display: flex;
+      overflow-x: auto; /* Permite scroll horizontal */
+      gap: 10px;
+      padding-bottom: 10px; /* Espacio debajo de las imágenes */
+      -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+      scrollbar-width: thin; /* Estilo de scrollbar para Firefox */
+      scrollbar-color: #f9a1bc #f1c8db; /* Color de scrollbar para Firefox */
+      margin-bottom: 15px; /* Espacio antes del texto */
+      border-radius: 8px; /* Bordes redondeados para el área del carrusel */
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05); /* Sombra interna sutil */
+    }
+
+    /* Estilos para las imágenes individuales dentro del mini-carousel */
+    .producto-card .mini-carousel img {
+      flex-shrink: 0; /* Evita que las imágenes se encojan */
+      width: 100%; /* Las imágenes ocupan el ancho completo del contenedor visible */
       height: 280px; /* Altura fija para uniformidad */
       object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
-      border-radius: 8px;
-      margin-bottom: 18px;
+      border-radius: 8px; /* Bordes redondeados para las imágenes */
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
     }
+
+    /* Ocultar scrollbar por defecto pero mantener la funcionalidad */
+    .producto-card .mini-carousel::-webkit-scrollbar {
+      height: 8px; /* Altura del scrollbar */
+    }
+    .producto-card .mini-carousel::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Color de fondo del track */
+      border-radius: 10px;
+    }
+    .producto-card .mini-carousel::-webkit-scrollbar-thumb {
+      background: #f9a1bc; /* Color del thumb */
+      border-radius: 10px;
+    }
+    .producto-card .mini-carousel::-webkit-scrollbar-thumb:hover {
+      background: #d64c82; /* Color del thumb al pasar el ratón */
+    }
+
+
     .producto-card h3 {
       color: #7f2352;
       font-size: 1.4rem;
@@ -126,6 +162,7 @@
       color: #666;
       margin-bottom: 15px;
       flex-grow: 1; /* Permite que la descripción ocupe el espacio disponible */
+      text-align: left; /* Alinea la descripción a la izquierda */
     }
     .producto-card .precio {
       font-size: 1.3rem;
@@ -243,6 +280,11 @@
       .productos-grid {
         grid-template-columns: 1fr; /* Una columna en móvil */
       }
+      /* Ajuste para el carrusel en móvil */
+      .producto-card .mini-carousel img {
+        width: 95%; /* Las imágenes pueden ser ligeramente más pequeñas para ver un poco de la siguiente */
+        margin-right: 10px; /* Espacio entre imágenes */
+      }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -314,13 +356,16 @@
 
     <!-- Producto 1: Biker Cande -->
     <div class="producto-card">
-      <img class="popup-img" src="images/BikerCandeS-XXLMODELO10700.webp" alt="Biker Cande - Vista Frontal">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/BikerCandeS-XXLMODELO10700.webp" alt="Biker Cande - Imagen 1">
+        <img class="popup-img" src="images/BikerCandeS-XXL.webp" alt="Biker Cande - Imagen 2">
+      </div>
       <h3>Biker Cande</h3>
       <p class="descripcion">
-        - Tela INTERLOCK con SUPLEX.<br>
-        - Costuras con collareta.<br>
-        - Bolsillo trasero.<br>
-        - Talles S al XXL. Colores: Beige - Magenta - Verde Oliva - Uva (Consultar stock).
+        - Tela INTERLOCK con SUPLEX. <br>
+        - Costuras con collareta. <br>
+        - Bolsillo trasero. <br>
+        - Talles S al XXL. Colores: Beige - Magenta - Verde Oliva - Uva (Consultar stock de colores y talles).
       </p>
       <div class="precio">$21.400</div>
       <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Cande">Consultar por WhatsApp</a>
@@ -328,13 +373,16 @@
 
     <!-- Producto 2: Biker Con Bolsillos -->
     <div class="producto-card">
-      <img class="popup-img" src="images/BikerJimeCBolsillosS-XLMODELO10700.webp" alt="Biker Con Bolsillos - Vista Frontal">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/BikerJimeCBolsillosS-XLMODELO10700.webp" alt="Biker Con Bolsillos - Imagen 1">
+        <img class="popup-img" src="images/BikerJimeCBolsillosS-XL.webp" alt="Biker Con Bolsillos - Imagen 2">
+      </div>
       <h3>Biker Con Bolsillos</h3>
       <p class="descripcion">
-        - Tela INTERLOCK con SUPLEX.<br>
-        - Costuras con collareta.<br>
-        - Bolsillos a los costados.<br>
-        - Talles S al XXL. Colores: Negro - Verde Oliva - Chocolate - Azul - Magenta - Beige - Purpura (Consultar stock).
+        - Tela INTERLOCK con SUPLEX. <br>
+        - Costuras con collareta. <br>
+        - Bolsillos a los costados. <br>
+        - Talles S al XXL. Colores: Negro - Verde Oliva - Chocolate - Azul - Magenta - Beige - Purpura (Consultar stock de colores y talles).
       </p>
       <div class="precio">$21.400</div>
       <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Con%20Bolsillos">Consultar por WhatsApp</a>
@@ -342,26 +390,33 @@
 
     <!-- Producto 3: Biker Red -->
     <div class="producto-card">
-      <img class="popup-img" src="images/BikerRedS-XXLMODELO10900NEGROSOLO.webp" alt="Biker Red - Vista Frontal">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/BikerRedS-XXLMODELO10900NEGROSOLO.webp" alt="Biker Red - Imagen 1">
+        <!-- Si Biker Red tuviera otra imagen, iría aquí, por ejemplo: -->
+        <!-- <img class="popup-img" src="images/BikerRedS-XXLMODELO10900NEGROSOLO-2.webp" alt="Biker Red - Imagen 2"> -->
+      </div>
       <h3>Biker Red</h3>
       <p class="descripcion">
-        - Tela INTERLOCK con SUPLEX.<br>
-        - Costuras con collareta.<br>
-        - Bolsillo trasero con cierre termosellado.<br>
-        - Talles S al XXL. Colores: Solo negro (Consultar stock).
+        - Tela INTERLOCK con SUPLEX. <br>
+        - Costuras con collareta. <br>
+        - Bolsillo trasero con cierre termosellado. <br>
+        - Talles S al XXL. Colores: Solo negro (Consultar stock de talles).
       </p>
       <div class="precio">$21.800</div>
       <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Red">Consultar por WhatsApp</a>
     </div>
 
-    <!-- Producto 4: Biker Training (Asumiendo que este es el "segundo Biker con bolsillos" con info diferente) -->
+    <!-- Producto 4: Biker Training -->
     <div class="producto-card">
-      <img class="popup-img" src="images/BikerTrainingS-XLMODELO10900NEGROSOLO.webp" alt="Biker Training - Vista Frontal">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/BikerTrainingS-XLMODELO10900NEGROSOLO.webp" alt="Biker Training - Imagen 1">
+        <img class="popup-img" src="images/BikerTrainingS-XL.webp" alt="Biker Training - Imagen 2">
+      </div>
       <h3>Biker Training</h3>
       <p class="descripcion">
-        - Tela INTERLOCK con SUPLEX.<br>
-        - Costuras con collareta.<br>
-        - Talles S al XL. Colores: Solo negro (Consultar stock).
+        - Tela INTERLOCK con SUPLEX. <br>
+        - Costuras con collareta. <br>
+        - Talles S al XL. Colores: Solo negro (Consultar stock de talles).
       </p>
       <div class="precio">$21.800</div>
       <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
@@ -374,7 +429,7 @@
   <i class="fab fa-whatsapp"></i>
 </a>
   
-<!-- Popup Modal para imágenes grandes -->
+<!-- Popup Modal para imágenes grandes (se mantiene el mismo script) -->
 <div id="imgModal">
   <button class="close-modal" title="Cerrar">&times;</button>
   <img id="modalImg" src="" alt="Imagen ampliada">
