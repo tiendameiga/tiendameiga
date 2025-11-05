@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conjuntos Deportivos - Tienda Meiga</title>
+  <title>Mega Remerón - Tienda Meiga</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -78,43 +78,34 @@
     }
     main {
       padding: 30px 20px 40px 20px;
-      max-width: 900px; /* Ancho ajustado como en los remerones */
+      max-width: 900px;
       margin: 0 auto;
     }
     .producto-titulo {
       color: #d64c82;
-      font-size: 2.2rem;
-      margin-bottom: 30px; /* Ajustado como en los remerones */
+      font-size: 2rem;
+      margin-bottom: 30px;
       text-align: center;
       letter-spacing: 1px;
     }
-    /* Estilos del carrusel de remerones aplicados aquí */
     .carousel {
       display: flex;
       overflow-x: auto;
-      gap: 15px; /* Espacio entre imágenes */
+      gap: 15px;
       padding: 10px 0 16px 0;
       scroll-behavior: smooth;
-      justify-content: center; /* Centra las imágenes si hay pocas */
-      align-items: center; /* Centra verticalmente */
     }
     .carousel img {
-      flex-shrink: 0; /* Evita que las imágenes se encojan en el carrusel */
-      width: auto; /* El ancho se ajusta automáticamente */
-      height: auto; /* La altura se ajusta automáticamente */
-      max-width: 280px; /* Limita el ancho máximo para que no sean "gigantescas" */
-      max-height: 250px; /* Limita la altura máxima */
-      object-fit: contain; /* Asegura que la imagen completa sea visible sin recortar */
+      height: 260px;
       border-radius: 10px;
       box-shadow: 0 2px 16px rgba(127,35,82,0.11);
-      background: #fff; /* Fondo blanco si la imagen no llena el espacio por object-fit: contain */
+      background: #fff;
       cursor: pointer;
       transition: box-shadow 0.2s;
     }
     .carousel img:hover {
       box-shadow: 0 4px 18px #d64c82aa;
     }
-    /* Estilos del info-box de remerones aplicado aquí */
     .info-box {
       background: #fff;
       border-radius: 10px;
@@ -123,11 +114,6 @@
       max-width: 500px;
       margin: 30px auto 0 auto;
       text-align: center;
-    }
-    .info-box h3 { /* Para el nombre del producto */
-      color: #7f2352;
-      font-size: 1.6rem; /* Un poco más grande para el título del producto */
-      margin-bottom: 15px;
     }
     .info-box p {
       margin: 12px 0 20px 0;
@@ -183,6 +169,7 @@
     .whatsapp-btn:hover {
       background: #128c7e;
     }
+    /* Modal styles */
     #imgModal {
       display: none;
       position: fixed;
@@ -224,36 +211,30 @@
       font-size: 1rem;
       letter-spacing: 1px;
     }
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 14px 20px;
-      }
-      nav ul {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-      }
-      nav ul li {
-        margin: 8px 0;
-      }
-      nav ul li ul {
-        position: static;
-        box-shadow: none;
-        border-radius: 0;
-        min-width: unset;
-        background: none;
-      }
-      nav ul li ul li {
-        padding: 5px 0 5px 20px;
-      }
-      /* Aquí se podría ajustar el carousel img si fuera necesario, pero con max-width ya es adaptativo */
-      .carousel img {
-        max-width: 90%; /* Ajuste para que se vea un poco de la siguiente imagen en móvil si es necesario */
-        margin-right: 10px;
-      }
-    }
+       @media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 20px;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+  nav ul li {
+    margin: 8px 0;
+  }
+  nav ul li ul { /* Submenús en móvil */
+    position: static;       /* Que se ubiquen como parte de la lista */
+    box-shadow: none;       /* Sin sombra flotante */
+    border-radius: 0;
+    min-width: unset;       /* Que se adapten al ancho disponible */
+    background: none;       /* Fondo transparente o igual al padre */
+  }
+  nav ul li ul li {
+    padding: 5px 0 5px 20px; /* Indentado de los sub-items */
+  }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -267,49 +248,42 @@
         <a href="#">Pijamas</a>
         <ul>
           <li><a href="producto-pijama-modal-soft-animados.html">Pijama Modal Soft Animados</a></li>
-          <li><a href="producto-pijama-corto-musculosa-ancha.html">Pijama Corto Con Musculosa Ancha</a></li>
+					 <li><a href="producto-pijama-corto-musculosa-ancha.html">Pijama Corto Con Musculosa Ancha</a></li> <!-- Nuevo enlace -->
           <li><a href="producto-pijama-camiseros-cortos.html">Pijama Camiseros Cortos</a></li>
           <li><a href="producto-pijama-morley-corto-top.html">Pijama Morley Corto Con Top</a></li>
-          <li><a href="producto-pijama-morley-top-liso.html">Pijama Morley Corto Con Top LISO</a></li>
-          <li><a href="producto-pijama-top-short.html">Pijama Top + Short</a></li>
+			<li><a href="producto-pijama-morley-top-liso.html">Pijama Morley Corto Con Top LISO</a></li>
+			<li><a href="producto-pijama-top-short.html">Pijama Top + Short</a></li>
         </ul>
       </li>
       <li>
         <a href="#">Indumentaria</a>
         <ul>
           <li><a href="producto-megaremeron.html">Mega Remerón</a></li>
+          <!-- Agrega más productos de indumentaria aquí -->
         </ul>
       </li>
       <li>
-        <a href="#">Deportivo</a>
-        <ul>
-        <li><a href="producto-deportivo-biker.html">Biker</a></li>
-        <li><a href="producto-deportivo-calzas.html">Calza</a></li>
-        <li><a href="producto-deportivo-conjuntos.html">Conjunto</a></li>
-        <li><a href="producto-deportivo-musculosas.html">Musculosa</a></li>
-        <li><a href="producto-deportivo-top.html">Top</a></li>
-        </ul>
-      </li>
-      <li>
-          <a href="#">Infantil</a>
+		   <a href="#">Infantil</a>
         <ul>
 			<li><a href="producto-pijama-corto-kids.html">Pijama Corto KIDS</a></li>
+          <!-- Aquí puedes agregar productos de Infantil cuando los tengas -->
         </ul>
       </li>
       <li>
         <a href="#">Hogar</a>
         <ul>
+          <!-- Aquí puedes agregar productos de Hogar cuando los tengas -->
            <li><a href="producto-lonaa-playera.html">Lona Playera 150x150</a></li>
-           <li><a href="producto-megatoallon.html">MaxiToallón 150x150</a></li>
-	   <li><a href="producto-toallon-73-150.html">Toallón 73x150</a></li>
-           <li><a href="producto-repasador-individual.html">Repasador/Individual</a></li>
+           <li><a href="producto-megatoallon.html">MaxiToallón 150x150</a></li> 
+			<li><a href="producto-toallon-73-150.html">Toallón 73x150</a></li>
+			<li><a href="producto-repasador-individual.html">Repasador/Individual</a></li> 
 			<li><a href="producto-set-3-piezas-santel.html">Set 3 Piezas SANTEL</a></li>
         </ul>
       </li>
       <li>
         <a href="#">Entrega Inmediata</a>
         <ul>
-					 <li><a href="producto-conjunto-triangulito-less.html">Conjunto Triangulito + Less</a></li>
+		 <li><a href="producto-conjunto-triangulito-less.html">Conjunto Triangulito + Less</a></li>
           <li><a href="producto-repasador.html">Repasador</a></li>
           <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
         </ul>
@@ -319,77 +293,103 @@
   </nav>
 </header>
 
-<main>
-  <h2 class="producto-titulo">Nuestros Conjuntos Deportivos</h2>
+  <main>
+    <h2 class="producto-titulo">Mega Remerón Animado Manga Corta</h2>
+    <div class="carousel">
+      <img class="popup-img" src="images/Tom&JerryFdoNegro.webp" alt="Tom & Jerry">
+      <img class="popup-img" src="images/BabyStitch.webp" alt="Baby Stitch">
+      <img class="popup-img" src="images/BettyB&W.webp" alt="Betty">
+      <img class="popup-img" src="images/Daisy.webp" alt="Daisy">
+      <img class="popup-img" src="images/Disney.webp" alt="Disney">
+      <img class="popup-img" src="images/Frida.webp" alt="Frida">
+      <img class="popup-img" src="images/Garfield&Oddie.webp" alt="Garfield & Oddie">
+      <img class="popup-img" src="images/Garfield.webp" alt="Garfield">
+      <img class="popup-img" src="images/GarfieldAstronauta.webp" alt="Garfield Astronauta">
+      <img class="popup-img" src="images/HomeroCerveza.webp" alt="Homero Cerveza">
+      <img class="popup-img" src="images/KittyFdoNegro.webp" alt="Kitty">
+      <img class="popup-img" src="images/Mafalda.webp" alt="Mafalda">
+      <img class="popup-img" src="images/MickeyB&R.webp" alt="Mickey B&R">
+      <img class="popup-img" src="images/MickeyCaras.webp" alt="Mickey Caras">
+      <img class="popup-img" src="images/MickeyColoresSS.webp" alt="Mickey Colores">
+      <img class="popup-img" src="images/MickeyGrafitti.webp" alt="Mickey Grafitti">
+      <img class="popup-img" src="images/MickeyMouse.webp" alt="Mickey Mouse">
+      <img class="popup-img" src="images/MinnieAzul.webp" alt="Minnie Azul">
+      <img class="popup-img" src="images/MinnieChannel.webp" alt="Minnie Channel">
+      <img class="popup-img" src="images/MinnieCorazonesSS.webp" alt="Minnie Corazones">
+      <img class="popup-img" src="images/MinnieMouse.webp" alt="Minnie Mouse">
+      <img class="popup-img" src="images/PatoLucasSS.webp" alt="Pato Lucas">
+      <img class="popup-img" src="images/PatricioBobCalamardo.webp" alt="Patricio Bob Calamardo">
+      <img class="popup-img" src="images/Pinky&Cerebro.webp" alt="Pinky & Cerebro">
+      <img class="popup-img" src="images/SailorEstrella.webp" alt="Sailor Estrella">
+      <img class="popup-img" src="images/Silvestre.webp" alt="Silvestre">
+      <img class="popup-img" src="images/SilvestreRosa.webp" alt="Silvestre Rosa">
+      <img class="popup-img" src="images/SnoopyCasita.webp" alt="Snoopy Casita">
+      <img class="popup-img" src="images/SnoopyGlobitos.webp" alt="Snoopy Globitos">
+      <img class="popup-img" src="images/SnoopyLluvia.webp" alt="Snoopy Lluvia">
+      <img class="popup-img" src="images/StitchAcuarela.webp" alt="Stitch Acuarela">
+      <img class="popup-img" src="images/StitchLunares.webp" alt="Stitch Lunares">
+      <img class="popup-img" src="images/StitchRayas.webp" alt="Stitch Rayas">
+      <img class="popup-img" src="images/StitchStarbucks.webp" alt="Stitch Starbucks">
+      <img class="popup-img" src="images/Tom&JerryBatik.webp" alt="Tom & Jerry Batik">
+    </div>
+    <div class="info-box">
+      <p><strong>Medidas:</strong> Talle único 90x62 cm</p>
+      <p><strong>Detalles:</strong> Remerones hechos en tela spun, suaves y cómodos 😎</p>
+      <div class="precio">$24.000*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20del%20Mega%20Remerón">Consultar por WhatsApp</a>
+		 <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+  </main>
 
-  <!-- Carrusel de imágenes al estilo "Mega Remerón" -->
-  <div class="carousel">
-    <img class="popup-img" src="images/ConjuntoTop+ShorS-XXLMODELO10900.webp" alt="Conjunto Top + Short - Imagen 1">
-    <img class="popup-img" src="images/ConjuntoTop+ShorS-XXL.webp" alt="Conjunto Top + Short - Imagen 2">
+  <a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <!-- Popup Modal para imágenes grandes -->
+  <div id="imgModal">
+    <button class="close-modal" title="Cerrar">&times;</button>
+    <img id="modalImg" src="" alt="Imagen ampliada">
   </div>
-
-  <!-- Info Box para el producto (también al estilo "Mega Remerón") -->
-  <div class="info-box">
-    <h3>Conjunto Top + Short</h3>
-    <p>
-      <strong>- Tela:</strong> POLISUPLEX Premium. <br>
-      <strong>- Detalles:</strong> Costuras Reforzadas. <br>
-      <strong>- Estampado:</strong> Vinilo Reflex. <br>
-      <strong>- Talles:</strong> S al XXL. <br>
-      <strong>- Colores:</strong> Lavanda - Verde Pastel - Negro - Lila - Celeste - Azul - Chocolate - Rosa Viejo (Consultar stock).
-    </p>
-    <div class="precio">$21.800*</div>
-    <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20del%20Conjunto%20Top%20%2B%20Short">Consultar por WhatsApp</a>
-    <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
-  </div>
-
-</main>
-
-<a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
-
-<div id="imgModal">
-  <button class="close-modal" title="Cerrar">&times;</button>
-  <img id="modalImg" src="" alt="Imagen ampliada">
-</div>
-<script>
-  document.querySelectorAll('.popup-img').forEach(function(img) {
-    img.addEventListener('click', function() {
-      document.getElementById('modalImg').src = this.src;
-      document.getElementById('imgModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+  <script>
+    // Modal popup para ampliar imágenes
+    document.querySelectorAll('.popup-img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        document.getElementById('modalImg').src = this.src;
+        document.getElementById('imgModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
     });
-  });
-  document.querySelector('#imgModal .close-modal').onclick = function(e) {
-    document.getElementById('imgModal').style.display = 'none';
-    document.getElementById('modalImg').src = '';
-    document.body.style.overflow = '';
-    e.stopPropagation();
-  };
-  document.getElementById('imgModal').onclick = function(e) {
-    if (e.target === this) {
-      this.style.display = 'none';
-      document.getElementById('modalImg').src = '';
-      document.body.style.overflow = '';
-    }
-  };
-  document.addEventListener('keydown', function(e){
-    if(e.key==='Escape'){
+    document.querySelector('#imgModal .close-modal').onclick = function(e) {
       document.getElementById('imgModal').style.display = 'none';
       document.getElementById('modalImg').src = '';
       document.body.style.overflow = '';
-    }
-  });
-</script>
+      e.stopPropagation();
+    };
+    document.getElementById('imgModal').onclick = function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    };
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){
+        document.getElementById('imgModal').style.display = 'none';
+        document.getElementById('modalImg').src = '';
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+  
+    <!-- ... aquí va todo tu contenido ... -->
 
-<footer>
-  <p>
-    &copy; 2025 Tienda Meiga –
-    <a href="https://www.instagram.com/tiendameiga/" target="_blank" style="color:#7f2352; text-decoration:none;">
-      <i class="fab fa-instagram"></i> @tiendameiga
-    </a>
-  </p>
-</footer>
+  <footer>
+    <p>
+      &copy; 2025 Tienda Meiga –
+      <a href="https://www.instagram.com/tiendameiga/" target="_blank" style="color:#7f2352; text-decoration:none;">
+        <i class="fab fa-instagram"></i> @tiendameiga
+      </a>
+    </p>
+  </footer>
 </body>
 </html>
