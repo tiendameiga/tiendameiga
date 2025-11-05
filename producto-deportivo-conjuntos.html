@@ -78,105 +78,85 @@
     }
     main {
       padding: 30px 20px 40px 20px;
-      max-width: 1200px;
+      max-width: 900px; /* Ancho ajustado como en los remerones */
       margin: 0 auto;
     }
     .producto-titulo {
       color: #d64c82;
       font-size: 2.2rem;
-      margin-bottom: 40px;
+      margin-bottom: 30px; /* Ajustado como en los remerones */
       text-align: center;
       letter-spacing: 1px;
     }
-    .productos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      padding: 10px 0;
-    }
-    .producto-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(127,35,82,0.1);
-      padding: 25px;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .producto-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 6px 25px #d64c82aa;
-    }
-    .producto-card .mini-carousel {
+    /* Estilos del carrusel de remerones aplicados aquí */
+    .carousel {
       display: flex;
       overflow-x: auto;
-      gap: 10px;
-      padding-bottom: 10px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      scrollbar-color: #f9a1bc #f1c8db;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+      gap: 15px; /* Espacio entre imágenes */
+      padding: 10px 0 16px 0;
+      scroll-behavior: smooth;
+      justify-content: center; /* Centra las imágenes si hay pocas */
+      align-items: center; /* Centra verticalmente */
     }
-    .producto-card .mini-carousel img {
-      flex-shrink: 0;
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 8px;
+    .carousel img {
+      flex-shrink: 0; /* Evita que las imágenes se encojan en el carrusel */
+      width: auto; /* El ancho se ajusta automáticamente */
+      height: auto; /* La altura se ajusta automáticamente */
+      max-width: 280px; /* Limita el ancho máximo para que no sean "gigantescas" */
+      max-height: 250px; /* Limita la altura máxima */
+      object-fit: contain; /* Asegura que la imagen completa sea visible sin recortar */
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(127,35,82,0.11);
+      background: #fff; /* Fondo blanco si la imagen no llena el espacio por object-fit: contain */
       cursor: pointer;
-      transition: transform 0.2s ease-in-out;
+      transition: box-shadow 0.2s;
     }
-    .producto-card .mini-carousel::-webkit-scrollbar {
-      height: 8px;
+    .carousel img:hover {
+      box-shadow: 0 4px 18px #d64c82aa;
     }
-    .producto-card .mini-carousel::-webkit-scrollbar-track {
-      background: #f1f1f1;
+    /* Estilos del info-box de remerones aplicado aquí */
+    .info-box {
+      background: #fff;
       border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(127,35,82,0.08);
+      padding: 30px;
+      max-width: 500px;
+      margin: 30px auto 0 auto;
+      text-align: center;
     }
-    .producto-card .mini-carousel::-webkit-scrollbar-thumb {
-      background: #f9a1bc;
-      border-radius: 10px;
-    }
-    .producto-card .mini-carousel::-webkit-scrollbar-thumb:hover {
-      background: #d64c82;
-    }
-    .producto-card h3 {
+    .info-box h3 { /* Para el nombre del producto */
       color: #7f2352;
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-    }
-    .producto-card .descripcion {
-      font-size: 0.95rem;
-      color: #666;
+      font-size: 1.6rem; /* Un poco más grande para el título del producto */
       margin-bottom: 15px;
-      flex-grow: 1;
-      text-align: left;
     }
-    .producto-card .precio {
+    .info-box p {
+      margin: 12px 0 20px 0;
+      font-size: 1.05rem;
+      color: #555;
+    }
+    .info-box strong {
+      color: #7f2352;
+    }
+    .precio {
       font-size: 1.3rem;
       color: #d64c82;
       font-weight: bold;
-      margin-top: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .boton {
       display: inline-block;
-      padding: 12px 30px;
+      margin-top: 10px;
+      padding: 13px 38px;
       background: #f9a1bc;
       color: #7f2352;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.07rem;
       border-radius: 30px;
       text-decoration: none;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       transition: background 0.2s;
       border: none;
       cursor: pointer;
-      align-self: center;
     }
     .boton:hover {
       background: #d64c82;
@@ -268,11 +248,9 @@
       nav ul li ul li {
         padding: 5px 0 5px 20px;
       }
-      .productos-grid {
-        grid-template-columns: 1fr;
-      }
-      .producto-card .mini-carousel img {
-        width: 95%;
+      /* Aquí se podría ajustar el carousel img si fuera necesario, pero con max-width ya es adaptativo */
+      .carousel img {
+        max-width: 90%; /* Ajuste para que se vea un poco de la siguiente imagen en móvil si es necesario */
         margin-right: 10px;
       }
     }
@@ -342,28 +320,29 @@
 </header>
 
 <main>
-  <h2 class="producto-titulo">Nuestros Conjuntos Deportivos</h2>
-  <div class="productos-grid">
+  <h2 class="producto-titulo">Conjuntos Deportivos 🏋🏻‍♀️</h2>
 
-    <!-- Producto 1: Conjunto Top + Short -->
-    <div class="producto-card">
-      <div class="mini-carousel">
-        <img class="popup-img" src="images/ConjuntoTop+ShorS-XXLMODELO10900.webp" alt="Conjunto Top + Short - Imagen 1">
-        <img class="popup-img" src="images/ConjuntoTop+ShorS-XXL.webp" alt="Conjunto Top + Short - Imagen 2">
-      </div>
-      <h3>Conjunto Top + Short</h3>
-      <p class="descripcion">
-        - Tela POLISUPLEX Premium. <br>
-        - Costuras Reforzadas. <br>
-        - Estampado con Vinilo Reflex. <br>
-        - Talles S al XXL. Colores: Lavanta - Verde Pastel - Negro - Lila - Celeste - Azul - Chocolate - Rosa Viejo (Consultar stock de colores y talles).
-      </p>
-      <div class="precio">$21.800*</div>
-      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20del%20Conjunto%20Top%20%2B%20Short">Consultar por WhatsApp</a>
-		  <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
-    </div>
-
+  <!-- Carrusel de imágenes al estilo "Mega Remerón" -->
+  <div class="carousel">
+    <img class="popup-img" src="images/ConjuntoTop+ShorS-XXLMODELO10900.webp" alt="Conjunto Top + Short - Imagen 1">
+    <img class="popup-img" src="images/ConjuntoTop+ShorS-XXL.webp" alt="Conjunto Top + Short - Imagen 2">
   </div>
+
+  <!-- Info Box para el producto (también al estilo "Mega Remerón") -->
+  <div class="info-box">
+    <h3>Conjunto Top + Short</h3>
+    <p>
+      <strong>- Tela:</strong> POLISUPLEX Premium. <br>
+      <strong>- Detalles:</strong> Costuras Reforzadas. <br>
+      <strong>- Estampado:</strong> Vinilo Reflex. <br>
+      <strong>- Talles:</strong> S al XXL. <br>
+      <strong>- Colores:</strong> Lavanda - Verde Pastel - Negro - Lila - Celeste - Azul - Chocolate - Rosa Viejo (Consultar stock).
+    </p>
+    <div class="precio">$21.800*</div>
+    <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20del%20Conjunto%20Top%20%2B%20Short">Consultar por WhatsApp</a>
+    <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+  </div>
+
 </main>
 
 <a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
