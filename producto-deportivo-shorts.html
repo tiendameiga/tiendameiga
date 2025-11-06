@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Short - Tienda Meiga</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffaf6;
+      color: #2d2d2d;
+    }
+    header {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #7f2352;
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav ul li {
+      position: relative;
+      margin: 0 18px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #7f2352;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover {
+      color: #d64c82;
+    }
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.08);
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+      min-width: 180px;
+      border-radius: 6px;
+      z-index: 10;
+    }
+    nav ul li ul li {
+      padding: 8px 20px;
+    }
+    nav ul li ul li a {
+      color: #7f2352;
+      font-weight: normal;
+      font-size: 1rem;
+    }
+    nav ul li:hover ul {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    main {
+      padding: 30px 20px 40px 20px;
+      max-width: 1200px; /* Ampliado para más productos */
+      margin: 0 auto;
+    }
+    .producto-titulo {
+      color: #d64c82;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 columnas en escritorio, adaptable */
+      gap: 30px;
+      padding: 10px 0;
+    }
+    .producto-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(127,35,82,0.1);
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; /* Para flexbox interno */
+      flex-direction: column; /* Apila contenido */
+      justify-content: space-between; /* Espacio entre contenido y botón */
+    }
+    .producto-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 25px #d64c82aa;
+    }
+
+    /* Estilos para el carrusel dentro de cada tarjeta */
+    .producto-card .mini-carousel {
+      display: flex;
+      overflow-x: auto; /* Permite scroll horizontal */
+      gap: 10px;
+      padding-bottom: 10px; /* Espacio debajo de las imágenes */
+      -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+      scrollbar-width: thin; /* Estilo de scrollbar para Firefox */
+      scrollbar-color: #f9a1bc #f1c8db; /* Color de scrollbar para Firefox */
+      margin-bottom: 15px; /* Espacio antes del texto */
+      border-radius: 8px; /* Bordes redondeados para el área del carrusel */
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05); /* Sombra interna sutil */
+    }
+
+    /* Estilos para las imágenes individuales dentro del mini-carousel */
+    .producto-card .mini-carousel img {
+      flex-shrink: 0; /* Evita que las imágenes se encojan */
+      width: 100%; /* Las imágenes ocupan el ancho completo del contenedor visible */
+      height: 280px; /* Altura fija para uniformidad */
+      object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+      border-radius: 8px; /* Bordes redondeados para las imágenes */
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    /* Ocultar scrollbar por defecto pero mantener la funcionalidad */
+    .producto-card .mini-carousel::-webkit-scrollbar {
+      height: 8px; /* Altura del scrollbar */
+    }
+    .producto-card .mini-carousel::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Color de fondo del track */
+      border-radius: 10px;
+    }
+    .producto-card .mini-carousel::-webkit-scrollbar-thumb {
+      background: #f9a1bc; /* Color del thumb */
+      border-radius: 10px;
+    }
+    .producto-card .mini-carousel::-webkit-scrollbar-thumb:hover {
+      background: #d64c82; /* Color del thumb al pasar el ratón */
+    }
+
+
+    .producto-card h3 {
+      color: #7f2352;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .producto-card .descripcion {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 15px;
+      flex-grow: 1; /* Permite que la descripción ocupe el espacio disponible */
+      text-align: left; /* Alinea la descripción a la izquierda */
+    }
+    .producto-card .precio {
+      font-size: 1.3rem;
+      color: #d64c82;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    .boton {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #f9a1bc;
+      color: #7f2352;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      align-self: center; /* Centra el botón */
+    }
+    .boton:hover {
+      background: #d64c82;
+      color: #fff;
+    }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+      z-index: 50;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .whatsapp-btn:hover {
+      background: #128c7e;
+    }
+    /* Modal styles (copiar de tu HTML principal) */
+    #imgModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.2s;
+    }
+    #imgModal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px #000;
+      background: #fffaf6;
+    }
+    #imgModal .close-modal {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 2.1rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1100;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    footer {
+      background: linear-gradient(90deg, #f9a1bc 0%, #f1c8db 100%);
+      color: #7f2352;
+      text-align: center;
+      padding: 26px;
+      margin-top: 40px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 20px;
+      }
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav ul li {
+        margin: 8px 0;
+      }
+      nav ul li ul {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        min-width: unset;
+        background: none;
+      }
+      nav ul li ul li {
+        padding: 5px 0 5px 20px;
+      }
+      .productos-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+      }
+      /* Ajuste para el carrusel en móvil */
+      .producto-card .mini-carousel img {
+        width: 95%; /* Las imágenes pueden ser ligeramente más pequeñas para ver un poco de la siguiente */
+        margin-right: 10px; /* Espacio entre imágenes */
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<header>
+  <!-- Copia tu header completo de tu página principal aquí -->
+  <h1>Tienda Meiga</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li>
+        <a href="#">Pijamas</a>
+        <ul>
+          <li><a href="producto-pijama-modal-soft-animados.html">Pijama Modal Soft Animados</a></li>
+          <li><a href="producto-pijama-corto-musculosa-ancha.html">Pijama Corto Con Musculosa Ancha</a></li>
+          <li><a href="producto-pijama-camiseros-cortos.html">Pijama Camiseros Cortos</a></li>
+          <li><a href="producto-pijama-morley-corto-top.html">Pijama Morley Corto Con Top</a></li>
+          <li><a href="producto-pijama-morley-top-liso.html">Pijama Morley Corto Con Top LISO</a></li>
+          <li><a href="producto-pijama-top-short.html">Pijama Top + Short</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Indumentaria</a>
+        <ul>
+          <li><a href="producto-megaremeron.html">Mega Remerón</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Deportivo</a>
+        <ul>
+        <li><a href="producto-deportivo-biker.html">Biker</a></li>
+        <li><a href="producto-deportivo-calzas.html">Calza</a></li>
+        <li><a href="producto-deportivo-conjuntos.html">Conjunto</a></li>
+        <li><a href="producto-deportivo-musculosas.html">Musculosa</a></li>
+	<li><a href="producto-deportivo-remeras.html">Remera</a></li>
+	<li><a href="producto-deportivo-shorts.html">Short</a></li>
+        <li><a href="producto-deportivo-top.html">Top</a></li>
+        </ul>
+      </li>
+      <li>
+          <a href="#">Infantil</a>
+        <ul>
+			<li><a href="producto-pijama-corto-kids.html">Pijama Corto KIDS</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Hogar</a>
+        <ul>
+           <li><a href="producto-lonaa-playera.html">Lona Playera 150x150</a></li>
+           <li><a href="producto-megatoallon.html">MaxiToallón 150x150</a></li> 
+	   <li><a href="producto-toallon-73-150.html">Toallón 73x150</a></li>
+           <li><a href="producto-repasador-individual.html">Repasador/Individual</a></li> 
+	   <li><a href="producto-set-3-piezas-santel.html">Set 3 Piezas SANTEL</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Entrega Inmediata</a>
+        <ul>
+	  <li><a href="producto-conjunto-triangulito-less.html">Conjunto Triangulito + Less</a></li>
+          <li><a href="producto-repasador.html">Repasador</a></li>
+          <li><a href="producto-pijama-camisero.html">Pijama Camisero Modal Soft</a></li>
+        </ul>
+      </li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h2 class="producto-titulo">Short</h2>
+  <div class="productos-grid">
+
+    <!-- Producto 1: Short Pro -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortProS-XLMODELO9100.webp" alt="Short Pro - Imagen 1">
+        <img class="popup-img" src="images/ShortProS-XL.webp" alt="Short Pro - Imagen 2">
+      </div>
+      <h3>Short Pro</h3>
+      <p class="descripcion">
+- Calidad Original.
+- Costuras Reforzadas.
+- Tela Gofrada.
+- Talles S al XL . Colores: Negro - Beige - Azul Marino - Celeste - Aero - Violeta - Verde Ingles - Gris - Bordo - Lila - Chocolate (Consultar stock de colores y talles)
+   </p>
+      <div class="precio">$18.200*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Cande">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+
+    <!-- Producto 2: Short Deportivo -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortDeportivoS-XXLMODELO7500.webp" alt="Short Deportivo - Imagen 1">
+        <img class="popup-img" src="images/ShortDeportivoS-XXL.webp" alt="Short Deportivo - Imagen 2">
+      </div>
+      <h3>Short Deportivo</h3>
+      <p class="descripcion">
+- Tela POLISUPLEX Premium.
+- Estampado Vinilo Reflex.
+- Talles S al XXL . Colores: Celeste - Azul - Negro - Lavanda - Lila - Verde Pastel (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$15.000*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Con%20Bolsillos">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+
+    <!-- Producto 3: Short One -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortOneS-XXXLMODELO9200.webp" alt="Short One - Imagen 1">
+        <img class="popup-img" src="images/ShortOneS-XXXL.webp" alt="Short One - Imagen 2">
+      </div>
+      <h3>Short One</h3>
+      <p class="descripcion">
+- Tela Short lycra con tela microfibra IMPORTADA.
+- Excelente calidad.
+- Ideal running.
+- Costuras reforzadas.
+- Estampado con Vinilo Reflex.
+- Talles S al XXXL . Colores: Negro - Verde Agua - Rosa - Gris Oscuro - Gris Claro - Verde Oliva - Violeta - Fucsia - Beige (Consultar stock de colores y talles)
+      <div class="precio">$18.400*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Red">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+
+    <!-- Producto 4: Short Training -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortTrainingS-XLMODELO9400.webp" alt="Short Training - Imagen 1">
+        <img class="popup-img" src="images/ShortTrainingS-XL.webp" alt="Short Training - Imagen 2">
+      </div>
+      <h3>Short Training</h3>
+      <p class="descripcion">
+- Tela LYCRA 70.
+- Estampado vinilo reflex. 
+- Costuras reforzadas, collareta.
+- Talles S al XL . Colores: Negro - Celeste - Beige - API - Rosa Bebe - Aero - Verde Oliva - Lavanda (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$18.800*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 5: Short Alo Seams -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortAloSeamsS-XLMODELO9400.webp" alt="Short Alo Seams - Imagen 1">
+        <img class="popup-img" src="images/ShortAloSeamsS-XL.webp" alt="Short Alo Seams - Imagen 2">
+      </div>
+      <h3>Short Alo Seams</h3>
+      <p class="descripcion">
+- Tela LYCRA 70. 
+- Estampado vinilo reflex. 
+- Costuras reforzadas, collareta. 
+- Talles S al XL . Colores: Beige - Rosa Bebe - Salmon Claro - Celeste - API - Negro - Bordo - Chocolate - Malbec - Aero (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$18.800*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 6: Short Pollera Alo -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortPolleraAloS-XLMODELO11600.webp" alt="Short Pollera Alo - Imagen 1">
+        <img class="popup-img" src="images/ShortPolleraAloS-XL.webp" alt="Short Pollera Alo - Imagen 2">
+      </div>
+      <h3>Short Pollera Alo</h3>
+      <p class="descripcion">
+- Tela LYCRA 70.
+- Moldeadora de cola. 
+- Costuras reforzadas.
+- Estampados vinilo reflex. 
+- Calidad Premium. 
+- La modelo tiene puesto un talle S.
+- Talles S al XL . Colores: Negro - Azul Marino - Aero - Malbec - Blanco - Bordo (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$23.200*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 7: Short Pollera Pro -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortPolleraProS-XLMODELO10000.webp" alt="Short Pollera Pro - Imagen 1">
+        <img class="popup-img" src="images/ShortPolleraProS-XL.webp" alt="Short Pollera Pro - Imagen 2">
+      </div>
+      <h3>Short Pollera Pro</h3>
+      <p class="descripcion">
+- Tela  LYCRA70.
+- Estampado Vinilo Reflex.
+- Costuras Reforzadas.
+- Calidad Original.
+- Talles S al XL . Colores: Negro - Malbec - Bordo - Aero - API - Beige - Celeste - Lavanda - Chocolate - Verde Oliva - Azul Marino (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$20.000*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 8: Short Pollera Jime -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortPolleraJimeS-XLMODELO11700.webp" alt="Short Pollera Jime - Imagen 1">
+        <img class="popup-img" src="images/ShortPolleraJimeS-XL.webp" alt="Short Pollera Jime - Imagen 2">
+      </div>
+      <h3>Short Pollera Jime</h3>
+      <p class="descripcion">
+- Tela LYCRA 70. 
+- Costuras Reforzadas
+- Estampado vinilo Reflex
+- Talles S al XL . Colores: Beige Claro - Azul - Bordo - Negro - Chocolate - Malbec - Rosa Pastel - Verde Oscuro - Verde Claro (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$23.400*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 9: Short Alo Vivo -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortAloVivoS-XLMODELO9400.webp" alt="Short Alo Vivo - Imagen 1">
+        <img class="popup-img" src="images/ShortAloVivoS-XL.webp" alt="Short Alo Vivo - Imagen 2">
+      </div>
+      <h3>Short Alo Vivo</h3>
+      <p class="descripcion">
+- Tela LYCRA 70. 
+- Estampado vinilo reflex. 
+- Detalles con vivo. 
+- Talles S al XL . Colores: Negro - Verde Oliva - API - Chocolate - Aero - Celeste - Rosa Bebe - Beige (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$18.800*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 10: Short Performance -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortPerformanceS-XLMODELO9400.webp" alt="Short Performance - Imagen 1">
+        <img class="popup-img" src="images/ShortPerformanceS-XL.webp" alt="Short Performance - Imagen 2">
+      </div>
+      <h3>Short Performance</h3>
+      <p class="descripcion">
+- Tela LYCRA 70. 
+- Calidad Original 
+- Costuras con collareta. 
+- Talles S al XL . Colores: Negro - Rosa Bebe - Beige - Aero - Celeste - Turquesa - Azul Marino - Purpura - Verde Oliva - Gris - Bordo - Chocolate - API - Malbec (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$18.800*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 11: Short Nike 365 -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortNike365S-XXLMODELO8200NEGROSOLO.webp" alt="Short Nike 365 - Imagen 1">
+        <img class="popup-img" src="images/ShortNike365S-XXL.webp" alt="Short Nike 365 - Imagen 2">
+      </div>
+      <h3>Short Nike 365</h3>
+      <p class="descripcion">
+- Tela LYCRA 70.
+- Estampados vinilo. 
+- Talles S al XXL . Colores: Negro (Consultar stock de talles)
+      </p>
+      <div class="precio">$16.400*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 12: Short Sublimado -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortSublimadoS-XXLMODELO8500.webp" alt="Short Sublimado - Imagen 1">
+        <img class="popup-img" src="images/ShortSublimadoS-XXL.webp" alt="Short Sublimado - Imagen 2">
+      </div>
+      <h3>Short Sublimado</h3>
+      <p class="descripcion">
+- Tela LYCRA 70 sublimada. 
+- Estampado Vinilo Reflex.
+- Costuras reforzadas.
+- Talles S al XXL . Colores: Gris Flores - Blanco&Negro Print - Lila Palmera - Rosa Hojas - Gris Plata - Gris Selva (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$17.000*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 13: Short Cintura Cruzada -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortCinturaCruzadaS-XLMODELO9100.webp" alt="Short Cintura Cruzada - Imagen 1">
+        <img class="popup-img" src="images/ShortCinturaCruzadaS-XL.webp" alt="Short Cintura Cruzada - Imagen 2">
+      </div>
+      <h3>Short Cintura Cruzada</h3>
+      <p class="descripcion">
+- Tela LYCRA 70. 
+- Liso sin marca. 
+- Sin costuras al frente. 
+- Consturas reforzadas. 
+- Talles S al XL . Colores: Negro - API - Malbec - Gris Claro (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$$18.200*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 14: Short Combinado -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortCombinadoS-XXLMODELO10400.webp" alt="Short Combinado - Imagen 1">
+        <img class="popup-img" src="images/TShortCombinadoS-XXL.webp" alt="Short Combinado - Imagen 2">
+      </div>
+      <h3>Short Combinado</h3>
+      <p class="descripcion">
+- Tela INTERLOCK con SUPLEX. 
+- Calidad ORIGINAL. 
+- Costuras con collareta. 
+- Talles S al XXL . Colores: Magenta - Chocolate - Gris Vison - Azul - Purpura (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$20.800*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 15: Short Swift -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortSwiftS-XXLMODELO10500.webp" alt="Short Swift - Imagen 1">
+        <img class="popup-img" src="images/ShortSwiftS-XXL.webp" alt="Short Swift - Imagen 2">
+      </div>
+      <h3>Short Swift</h3>
+      <p class="descripcion">
+- Tela LYCRA 70. 
+- Calidad ORIGINAL. 
+- Costuras con collareta. 
+- Con bolsillos.
+- Talles S al XXL . Colores: Negro - Chocolate - Purpura - Azul - Magenta (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$21.000*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+    <!-- Producto 16: Short Pollera Alexa -->
+    <div class="producto-card">
+      <div class="mini-carousel">
+        <img class="popup-img" src="images/ShortPolleraAlexaS-XLMODELO11800.webp" alt="Short Pollera Alexa - Imagen 1">
+        <img class="popup-img" src="images/ShortPolleraAlexaS-XL.webp" alt="Short Pollera Alexa - Imagen 2">
+      </div>
+      <h3>Short Pollera Alexa</h3>
+      <p class="descripcion">
+- Tela  LYCRA70.
+- Estampado Vinilo Reflex.
+- Costuras reforzadas con collareta. 
+- La mejor calidad. 
+- Talles S al XL . Colores: Negro - Malbec - Chocolate (Consultar stock de colores y talles)
+      </p>
+      <div class="precio">$23.600*</div>
+      <a class="boton" href="https://wa.me/541138811121?text=Hola!%20Quiero%20más%20info%20de%20la%20Biker%20Training">Consultar por WhatsApp</a>
+		   <p style="font-size: 0.9em; color: #888; margin-top: 15px;">*Precio sujeto a modificación</p>
+    </div>
+
+  </div>
+</main>
+
+<a class="whatsapp-btn" href="https://wa.me/541138811121" title="WhatsApp Tienda Meiga" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+  
+<!-- Popup Modal para imágenes grandes (se mantiene el mismo script) -->
+<div id="imgModal">
+  <button class="close-modal" title="Cerrar">&times;</button>
+  <img id="modalImg" src="" alt="Imagen ampliada">
+</div>
+<script>
+  // Modal popup para ampliar imágenes (copia de tu script principal)
+  document.querySelectorAll('.popup-img').forEach(function(img) {
+    img.addEventListener('click', function() {
+      document.getElementById('modalImg').src = this.src;
+      document.getElementById('imgModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.querySelector('#imgModal .close-modal').onclick = function(e) {
+    document.getElementById('imgModal').style.display = 'none';
+    document.getElementById('modalImg').src = '';
+    document.body.style.overflow = '';
+    e.stopPropagation();
+  };
+  document.getElementById('imgModal').onclick = function(e) {
+    if (e.target === this) {
+      this.style.display = 'none';
+      document.getElementById('modalImg').src = '';
+      document.body.style.overflow = '';
+    }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape'){
+      document.getElementById('imgModal').style.display = 'none';
+      document.getElementById('modalImg').src = '';
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+  
+<footer>
+  <p>
+    &copy; 2025 Tienda Meiga –
+    <a href="https://www.instagram.com/tiendameiga/" target="_blank" style="color:#7f2352; text-decoration:none;">
+      <i class="fab fa-instagram"></i> @tiendameiga
+    </a>
+  </p>
+</footer>
+</body>
+</html>
