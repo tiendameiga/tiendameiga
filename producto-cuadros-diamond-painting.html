@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cuadros Diamond Painting - Tienda Meiga</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
-  <style>
+<style>
     body {
       font-family: 'Montserrat', Arial, sans-serif;
       margin: 0;
@@ -113,7 +113,7 @@
     /* Estilos para el carrusel dentro de cada tarjeta */
     .producto-card .mini-carousel {
       display: flex;
-      overflow-x: auto; /* Permite scroll horizontal */
+      overflow-x: scroll; /* Cambiado a 'scroll' para mayor claridad */
       gap: 10px;
       padding-bottom: 10px; /* Espacio debajo de las imágenes */
       -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
@@ -122,6 +122,7 @@
       margin-bottom: 15px; /* Espacio antes del texto */
       border-radius: 8px; /* Bordes redondeados para el área del carrusel */
       box-shadow: inset 0 0 5px rgba(0,0,0,0.05); /* Sombra interna sutil */
+      scroll-snap-type: x mandatory; /* Para un mejor efecto de "snap" al deslizar */
     }
 
     /* Estilos para las imágenes individuales dentro del mini-carousel */
@@ -133,6 +134,7 @@
       border-radius: 8px; /* Bordes redondeados para las imágenes */
       cursor: pointer;
       transition: transform 0.2s ease-in-out;
+      scroll-snap-align: start; /* Para un mejor efecto de "snap" al deslizar */
     }
 
     /* Ocultar scrollbar por defecto pero mantener la funcionalidad */
@@ -279,12 +281,73 @@
       }
       .productos-grid {
         grid-template-columns: 1fr; /* Una columna en móvil */
+        gap: 20px; /* Reducir el espacio entre productos en móvil */
+      }
+      /* Ajuste para los tamaños de fuente en móvil */
+      h1 {
+        font-size: 1.8rem; /* Título principal */
+      }
+      .producto-titulo {
+        font-size: 1.8rem; /* Título de la sección de productos */
+        margin-bottom: 25px;
+      }
+      .producto-card h3 {
+        font-size: 1.2rem; /* Título de la tarjeta de producto */
+      }
+      .producto-card .descripcion {
+        font-size: 0.9rem; /* Descripción del producto */
+      }
+      .producto-card .precio {
+        font-size: 1.1rem; /* Precio del producto */
+      }
+      .boton {
+        padding: 10px 25px; /* Botón más pequeño */
+        font-size: 0.95rem;
+      }
+      .producto-card {
+        padding: 18px; /* Padding reducido en la tarjeta */
       }
       /* Ajuste para el carrusel en móvil */
       .producto-card .mini-carousel img {
-        width: 95%; /* Las imágenes pueden ser ligeramente más pequeñas para ver un poco de la siguiente */
-        margin-right: 10px; /* Espacio entre imágenes */
+        width: 85%; /* Las imágenes ocuparán un 85% del ancho para que se vea una parte de la siguiente */
+        height: 250px; /* Altura un poco más pequeña */
       }
+      .whatsapp-btn {
+        width: 50px; /* Botón de WhatsApp más pequeño */
+        height: 50px;
+        font-size: 1.8rem;
+        bottom: 15px;
+        right: 15px;
+      }
+      footer {
+        padding: 20px;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 480px) { /* Media query adicional para celulares muy pequeños */
+        h1 {
+            font-size: 1.5rem;
+        }
+        .producto-titulo {
+            font-size: 1.6rem;
+        }
+        .producto-card h3 {
+            font-size: 1.1rem;
+        }
+        .producto-card .descripcion {
+            font-size: 0.85rem;
+        }
+        .producto-card .precio {
+            font-size: 1rem;
+        }
+        .boton {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        .producto-card .mini-carousel img {
+          width: 90%; /* Ajuste para que se vea un poco más grande en pantallas muy pequeñas */
+          height: 200px;
+        }
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
