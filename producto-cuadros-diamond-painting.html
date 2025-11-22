@@ -253,6 +253,11 @@
       font-size: 1rem;
       letter-spacing: 1px;
     }
+
+    /* **************************************************** */
+    /* INICIO DE LAS MODIFICACIONES/ADICIONES PROPUESTAS */
+    /* Se activa en pantallas de 700px de ancho o menos */
+    /* **************************************************** */
     @media (max-width: 700px) {
       header {
         flex-direction: column;
@@ -278,14 +283,62 @@
         padding: 5px 0 5px 20px;
       }
       .productos-grid {
-        grid-template-columns: 1fr; /* Una columna en móvil */
+        grid-template-columns: 1fr; /* Una columna en móvil: Hace que los productos se apilen */
+        gap: 20px; /* Reduce el espacio entre tarjetas apiladas */
       }
-      /* Ajuste para el carrusel en móvil */
+
+      /* Ajuste general para el título de la sección en móvil */
+      .producto-titulo {
+        font-size: 1.8rem; /* Título principal de la página un poco más pequeño */
+        margin-bottom: 20px; /* Reduce el espacio debajo del título */
+      }
+
+      /* Ajuste para el carrusel de imágenes dentro de cada tarjeta en móvil */
+      .producto-card .mini-carousel {
+        gap: 5px; /* Reduce el espacio entre imágenes en el carrusel móvil */
+        padding-bottom: 5px; /* Reduce el padding inferior del carrusel */
+        margin-bottom: 10px; /* Reduce el espacio antes del texto */
+      }
       .producto-card .mini-carousel img {
-        width: 95%; /* Las imágenes pueden ser ligeramente más pequeñas para ver un poco de la siguiente */
-        margin-right: 10px; /* Espacio entre imágenes */
+        width: 100%; /* Las imágenes ocupan el 100% del ancho visible del carrusel */
+        height: 200px; /* Altura fija para uniformidad, puedes ajustarla */
+        object-fit: cover;
+      }
+
+      /* Ajustes de tamaño de fuente y padding para el contenido de la tarjeta en móvil */
+      .producto-card {
+        padding: 15px; /* Reduce el padding interno de las tarjetas */
+      }
+      .producto-card h3 {
+        font-size: 1.2rem; /* Título del producto un poco más pequeño */
+        margin-bottom: 8px; /* Reduce el espacio debajo del título */
+      }
+      .producto-card .descripcion {
+        font-size: 0.85rem; /* Descripción más pequeña */
+        margin-bottom: 10px; /* Reduce el espacio debajo de la descripción */
+      }
+      .producto-card .precio {
+        font-size: 1.1rem; /* Precio más pequeño */
+        margin-top: 10px; /* Reduce el espacio superior del precio */
+        margin-bottom: 15px; /* Reduce el espacio inferior del precio */
+      }
+      .boton {
+        padding: 10px 20px; /* Botón un poco más compacto */
+        font-size: 0.9rem; /* Fuente del botón más pequeña */
+      }
+
+      /* Ajuste para el botón de WhatsApp en móvil */
+      .whatsapp-btn {
+        width: 50px; /* Tamaño del botón más pequeño */
+        height: 50px;
+        font-size: 1.8rem; /* Icono más pequeño */
+        bottom: 15px; /* Más cerca del borde inferior */
+        right: 15px; /* Más cerca del borde derecho */
       }
     }
+    /* **************************************************** */
+    /* FIN DE LAS MODIFICACIONES/ADICIONES PROPUESTAS */
+    /* **************************************************** */
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
