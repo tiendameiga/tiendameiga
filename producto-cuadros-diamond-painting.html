@@ -121,6 +121,7 @@
     .producto-card .mini-carousel {
       display: flex;
       overflow-x: auto; /* Permite scroll horizontal */
+	  overflow-y: hidden;
       gap: 10px;
       padding-bottom: 10px; /* Espacio debajo de las imágenes */
       -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
@@ -131,14 +132,15 @@
       box-shadow: inset 0 0 5px rgba(0,0,0,0.05); /* Sombra interna sutil */
       width: 100%; /* Importante para que el carrusel no se desborde del producto-card */
       box-sizing: border-box; /* Incluye padding y border en el ancho total */
-      white-space: nowrap; /* Fuerza a que los elementos IMG permanezcan en una línea */
+      white-space: normal; /* Fuerza a que los elementos IMG permanezcan en una línea */
     }
 
     /* Estilos para las imágenes individuales dentro del mini-carousel */
     .producto-card .mini-carousel img {
       flex-shrink: 0; /* Evita que las imágenes se encojan */
-      width: 280px; /* Ancho base para desktop/tablets grandes */
-      height: 280px; /* Altura fija para uniformidad */
+      width: 100px; /* Ancho base para desktop/tablets grandes */
+	  max-width: 100%;
+      height: auto; /* Altura fija para uniformidad */
       object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
       border-radius: 8px; /* Bordes redondeados para las imágenes */
       cursor: pointer;
